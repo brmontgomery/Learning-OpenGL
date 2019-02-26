@@ -153,7 +153,7 @@ int main() {
 
 		glBindVertexArray(VAO);
 
-		glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, sizeof(indeces), GL_UNSIGNED_INT, 0);
 
 		//check events and swap buffers
 		glfwSwapBuffers(window);
