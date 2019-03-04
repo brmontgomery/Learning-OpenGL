@@ -90,6 +90,9 @@ int main() {
 
 		shader1.use();
 
+		int vertexPositionLocation = glGetUniformLocation(shader1.ID, "horizOffset");
+		glUniform3f(vertexPositionLocation, 0.5f, 0.0f, 0.0f);
+
 		glBindVertexArray(VAO);
 
 		glDrawElements(GL_TRIANGLES, sizeof(indeces), GL_UNSIGNED_INT, 0);
