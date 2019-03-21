@@ -9,6 +9,10 @@
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
+// settings
+const unsigned int SCR_WIDTH = 800;
+const unsigned int SCR_HEIGHT = 600;
+
 
 int main() {
 
@@ -24,7 +28,7 @@ int main() {
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	//creating window
-	GLFWwindow* window = glfwCreateWindow(800, 600, "The Grand Experiment", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "The Grand Experiment", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window!" << std::endl;
 		glfwTerminate();
