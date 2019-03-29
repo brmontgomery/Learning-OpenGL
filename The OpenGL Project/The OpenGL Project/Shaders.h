@@ -52,8 +52,6 @@ public:
 		//compiling shaders
 
 		unsigned int vertex, fragment;
-		int success;
-		char infoLog[512];
 
 		//vertexShader
 		vertex = glCreateShader(GL_VERTEX_SHADER);
