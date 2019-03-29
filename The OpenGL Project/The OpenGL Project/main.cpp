@@ -10,6 +10,11 @@
 
 #include <iostream>
 
+//camera
+glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+const glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+const glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
 
@@ -33,6 +38,8 @@ int main() {
 
 	//creating window
 	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "The Grand Experiment", NULL, NULL);
+	int curWidth = SCR_WIDTH;
+	int curHeight = SCR_HEIGHT;
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window!" << std::endl;
 		glfwTerminate();
@@ -198,12 +205,11 @@ int main() {
 	// or set it via the texture class
 	shader1.setInt("texture2", 1);
 
-
-
 	//--------------------rendering loop------------------------
 	while (!glfwWindowShouldClose(window)) {
 		//input
 		processInput(window);
+		glfwGetFramebufferSize(window, &curWidth, &curHeight);
 
 		//rendering commands
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -219,14 +225,12 @@ int main() {
 		shader1.use();
 
 		// create transformations
-		glm::mat4 view = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
-		glm::mat4 projection = glm::mat4(1.0f);
-		float curDims[4];
-		glGetFloatv(GL_VIEWPORT, curDims);
-		projection = glm::perspective(glm::radians(45.0f), curDims[2] / curDims[3], 0.1f, 100.0f);
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
-		// pass transformation matrices to the shader
-		shader1.setMat4("projection", projection); // note: currently we set the projection matrix each frame, but since the projection matrix rarely changes it's often best practice to set it outside the main loop only once.
+		//projection
+		glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)curWidth / (float)curHeight, 0.1f, 100.0f);
+		shader1.setMat4("projection", projection);
+
+		//view (with spin)
+		glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
 		shader1.setMat4("view", view);
 
 		glBindVertexArray(VAO);
@@ -266,4 +270,13 @@ void processInput(GLFWwindow* window) {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
 		glfwSetWindowShouldClose(window, true);
 	}
+	float cameraSpeed = 0.03f; // adjust accordingly
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		cameraPos += cameraSpeed * cameraFront;
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		cameraPos -= cameraSpeed * cameraFront;
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
 }
