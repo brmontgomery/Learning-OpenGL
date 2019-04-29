@@ -29,10 +29,13 @@
     <ClInclude Include="Shaders.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
+    <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Camera.h">
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Models.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -43,10 +46,10 @@
     <None Include="Shaders\lightingShader.vert">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="Shaders\lampShader.frag">
+    <None Include="Shaders\flatShader.frag">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="Shaders\lampShader.vert">
+    <None Include="Shaders\flatShader.vert">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
