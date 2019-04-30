@@ -90,11 +90,6 @@ int main()
 	Shader fancyShader("Shaders/lightingShader.vert", "Shaders/lightingShader.frag");
 	Shader flatShader("Shaders/lampShader.vert", "Shaders/lampShader.frag");
 
-	//lamp VAO stuff
-	unsigned int lightVAO;
-	glGenVertexArrays(1, &lightVAO);
-	glBindVertexArray(lightVAO);
-
 
 	//set the coords for lights to light the object
 	glm::vec3 pointLightPositions[] = {
