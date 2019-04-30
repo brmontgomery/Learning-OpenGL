@@ -46,10 +46,10 @@
     <None Include="Shaders\lightingShader.vert">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="Shaders\flatShader.frag">
+    <None Include="Shaders\lampShader.frag">
       <Filter>Source Files</Filter>
     </None>
-    <None Include="Shaders\flatShader.vert">
+    <None Include="Shaders\lampShader.vert">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
