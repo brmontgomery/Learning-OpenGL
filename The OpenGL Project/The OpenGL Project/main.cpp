@@ -8,15 +8,14 @@
 
 #include "Shaders.h"
 #include "Camera.h"
-#include "Models.h"
 
 #include <iostream>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void processInput(GLFWwindow *window, bool &fancy);
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+void processInput(GLFWwindow *window);
+unsigned int loadTexture(char const * path);
 
 // settings
 const unsigned int SCR_WIDTH = 800;
@@ -33,7 +32,7 @@ float deltaTime = 0.0f;	// time between current frame and last frame
 float lastFrame = 0.0f;
 
 // lighting
-bool fancy = 1;
+glm::vec3 lampPos(1.2f, 1.0f, -3.0f);
 
 int main()
 {
@@ -64,7 +63,6 @@ int main()
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
 	glfwSetScrollCallback(window, scroll_callback);
-	glfwSetKeyCallback(window, key_callback);
 
 
 	// tell GLFW to capture our mouse
@@ -87,20 +85,113 @@ int main()
 
 	// build and compile our shader zprogram
 	// ------------------------------------
-	Shader fancyShader("Shaders/lightingShader.vert", "Shaders/lightingShader.frag");
-	Shader flatShader("Shaders/lampShader.vert", "Shaders/lampShader.frag");
+	Shader lightingShader("Shaders/lightingShader.vert", "Shaders/lightingShader.frag");
+	Shader lampShader("Shaders/lampShader.vert", "Shaders/lampShader.frag");
 
 
-	//set the coords for lights to light the object
-	glm::vec3 pointLightPositions[] = {
-		glm::vec3(0.7f,  0.2f,  2.0f),
-		glm::vec3(2.3f, -3.3f, -4.0f),
-		glm::vec3(-4.0f,  2.0f, -12.0f),
-		glm::vec3(0.0f,  0.0f, -3.0f)
+	// set up vertex data (and buffer(s)) and configure vertex attributes
+	// ------------------------------------------------------------------
+	float vertices[] = {
+		// positions          // normals           // texture coords
+		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
+		 0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
+		 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
+		 0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
+		-0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  1.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
+
+		-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
+		 0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  0.0f,
+		 0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
+		 0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  1.0f,  1.0f,
+		-0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  1.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,  0.0f,  0.0f,
+
+		-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+		-0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
+		-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+		-0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+		-0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+		-0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+
+		 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+		 0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  1.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+		 0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  1.0f,
+		 0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  0.0f,  0.0f,
+		 0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,  1.0f,  0.0f,
+
+		-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
+		 0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  1.0f,
+		 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
+		 0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  1.0f,  0.0f,
+		-0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  0.0f,
+		-0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,  0.0f,  1.0f,
+
+		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f,
+		 0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  1.0f,
+		 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
+		 0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  1.0f,  0.0f,
+		-0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  0.0f,
+		-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f,  1.0f
 	};
 
-	Model nanosuitModel("resources/models/nanosuit/crysis_nano_suit_2/scene.gltf");
-	
+
+	// world space positions of our cubes
+	glm::vec3 cubePositions[] = {
+		glm::vec3(0.0f,  0.0f,  0.0f),
+		glm::vec3(2.0f,  5.0f, -15.0f),
+		glm::vec3(-1.5f, -2.2f, -2.5f),
+		glm::vec3(-3.8f, -2.0f, -12.3f),
+		glm::vec3(2.4f, -0.4f, -3.5f),
+		glm::vec3(-1.7f,  3.0f, -7.5f),
+		glm::vec3(1.3f, -2.0f, -2.5f),
+		glm::vec3(1.5f,  2.0f, -2.5f),
+		glm::vec3(1.5f,  0.2f, -1.5f),
+		glm::vec3(-1.3f,  1.0f, -1.5f)
+	};
+	unsigned int VBO, objectVAO, lampVAO;
+	glGenVertexArrays(1, &objectVAO);
+	glGenBuffers(1, &VBO);
+
+	//object VAO stuff
+	glBindVertexArray(objectVAO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	// position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	// normal attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+	// texture coord attribute
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
+
+	//lamp VAO stuff
+	glGenVertexArrays(1, &lampVAO);
+	glBindVertexArray(lampVAO);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+
+	// set the vertex attributes (only position data for our lamp)
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	//load texture
+	unsigned int containerTex = loadTexture("resources/textures/containerForLightingMapTut.png");
+	unsigned int containerSpecularMap = loadTexture("resources/textures/containerForLightingMapTut_specular.png");
+	unsigned int containerEmissionMap = loadTexture("resources/textures/containerLightingMapEmission.jpg");
+
+	// tell opengl for each sampler to which texture unit it belongs to (only has to be done once)
+	// -------------------------------------------------------------------------------------------
+	lightingShader.use();
+	lightingShader.setInt("material.diffuse", 0);
+	lightingShader.setInt("material.specular", 1);
+	lightingShader.setInt("material.emission", 2);
+
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
@@ -113,111 +204,89 @@ int main()
 
 		// input
 		// -----
-		processInput(window, fancy);
+		processInput(window);
 		glfwGetFramebufferSize(window, &curWidth, &curHeight);
 
 		// render
 		// ------
-		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		if (fancy) {
-			// be sure to activate shader when setting uniforms/drawing objects
-			fancyShader.use();
-			fancyShader.setVec3("viewPos", camera.Position);
-			fancyShader.setFloat("material.shininess", 32.0f);
+		lampPos.x = 2.0f * sin(glfwGetTime());
 
-			/*
-			   Here we set all the uniforms for the 5/6 types of lights we have. We have to set them manually and index
-			   the proper PointLight struct in the array to set each uniform variable. This can be done more code-friendly
-			   by defining light types as classes and set their values in there, or by using a more efficient uniform approach
-			   by using 'Uniform buffer objects', but that is something we'll discuss in the 'Advanced GLSL' tutorial.
-			*/
-			// directional light
-			fancyShader.setVec3("dirLight.direction", -0.2f, -1.0f, -0.3f);
-			fancyShader.setVec3("dirLight.ambient", 0.05f, 0.05f, 0.05f);
-			fancyShader.setVec3("dirLight.diffuse", 0.4f, 0.4f, 0.4f);
-			fancyShader.setVec3("dirLight.specular", 0.5f, 0.5f, 0.5f);
-			// point light 1
-			fancyShader.setVec3("pointLights[0].position", pointLightPositions[0]);
-			fancyShader.setVec3("pointLights[0].ambient", 0.05f, 0.05f, 0.05f);
-			fancyShader.setVec3("pointLights[0].diffuse", 0.8f, 0.8f, 0.8f);
-			fancyShader.setVec3("pointLights[0].specular", 1.0f, 1.0f, 1.0f);
-			fancyShader.setFloat("pointLights[0].constant", 1.0f);
-			fancyShader.setFloat("pointLights[0].linear", 0.09);
-			fancyShader.setFloat("pointLights[0].quadratic", 0.032);
-			// point light 2
-			fancyShader.setVec3("pointLights[1].position", pointLightPositions[1]);
-			fancyShader.setVec3("pointLights[1].ambient", 0.05f, 0.05f, 0.05f);
-			fancyShader.setVec3("pointLights[1].diffuse", 0.8f, 0.8f, 0.8f);
-			fancyShader.setVec3("pointLights[1].specular", 1.0f, 1.0f, 1.0f);
-			fancyShader.setFloat("pointLights[1].constant", 1.0f);
-			fancyShader.setFloat("pointLights[1].linear", 0.09);
-			fancyShader.setFloat("pointLights[1].quadratic", 0.032);
-			// point light 3
-			fancyShader.setVec3("pointLights[2].position", pointLightPositions[2]);
-			fancyShader.setVec3("pointLights[2].ambient", 0.05f, 0.05f, 0.05f);
-			fancyShader.setVec3("pointLights[2].diffuse", 0.8f, 0.8f, 0.8f);
-			fancyShader.setVec3("pointLights[2].specular", 1.0f, 1.0f, 1.0f);
-			fancyShader.setFloat("pointLights[2].constant", 1.0f);
-			fancyShader.setFloat("pointLights[2].linear", 0.09);
-			fancyShader.setFloat("pointLights[2].quadratic", 0.032);
-			// point light 4
-			fancyShader.setVec3("pointLights[3].position", pointLightPositions[3]);
-			fancyShader.setVec3("pointLights[3].ambient", 0.05f, 0.05f, 0.05f);
-			fancyShader.setVec3("pointLights[3].diffuse", 0.8f, 0.8f, 0.8f);
-			fancyShader.setVec3("pointLights[3].specular", 1.0f, 1.0f, 1.0f);
-			fancyShader.setFloat("pointLights[3].constant", 1.0f);
-			fancyShader.setFloat("pointLights[3].linear", 0.09);
-			fancyShader.setFloat("pointLights[3].quadratic", 0.032);
+		glm::vec3 lightColor = glm::vec3(1.0f);
+		//changing colors for lamp light
+		/*lightColor.x = sin(glfwGetTime() * 1.3f);
+		lightColor.y = sin(glfwGetTime() * 0.7f);
+		lightColor.z = sin(glfwGetTime() * 1.7f);*/
 
-			// spotLight
-			fancyShader.setVec3("spotLight.position", camera.Position);
-			fancyShader.setVec3("spotLight.direction", camera.Front);
-			fancyShader.setVec3("spotLight.ambient", 0.0f, 0.0f, 0.0f);
-			fancyShader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f);
-			fancyShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
-			fancyShader.setFloat("spotLight.constant", 1.0f);
-			fancyShader.setFloat("spotLight.linear", 0.09);
-			fancyShader.setFloat("spotLight.quadratic", 0.032);
-			fancyShader.setFloat("spotLight.cutOff", glm::cos(glm::radians(12.5f)));
-			fancyShader.setFloat("spotLight.outerCutOff", glm::cos(glm::radians(15.0f)));
+		// be sure to activate shader when setting uniforms/drawing objects
+		lightingShader.use();
+		lightingShader.setVec3("viewPos", camera.Position);
+		lightingShader.setVec3("lightPos", lampPos);
 
-			// view/projection transformations
-			glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)curWidth / (float)curHeight, 0.1f, 100.0f);
-			glm::mat4 view = camera.GetViewMatrix();
-			fancyShader.setMat4("projection", projection);
-			fancyShader.setMat4("view", view);
+		lightingShader.setFloat("material.shininess", 32.0f);
 
-			// world transformation
-			glm::mat4 model = glm::mat4(1.0f);
-			model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // translate it down so it's at the center of the scene
-			model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// it's a bit too big for our scene, so scale it down
+		lightingShader.setVec3("light.ambient", lightColor * glm::vec3(0.1f));
+		lightingShader.setVec3("light.diffuse", lightColor * glm::vec3(0.7f)); 
+		lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
-			fancyShader.setMat4("model", model);
 
-			nanosuitModel.Draw(fancyShader);
-		} else {
-			flatShader.use();
+		// bind textures on corresponding texture units
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, containerTex);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_2D, containerSpecularMap);
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, containerEmissionMap);
 
-			// view/projection transformations
-			glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)curWidth/ (float)curHeight, 0.1f, 100.0f);
-			glm::mat4 view = camera.GetViewMatrix();
-			flatShader.setMat4("projection", projection);
-			flatShader.setMat4("view", view);
+		// pass projection matrix to shader (note that in this case it could change every frame)
+		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)curWidth / (float)curHeight, 0.1f, 100.0f);
+		lightingShader.setMat4("projection", projection);
 
-			// render the loaded model
-			glm::mat4 model = glm::mat4(1.0f);
-			model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f)); // translate it down so it's at the center of the scene
-			model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));	// it's a bit too big for our scene, so scale it down
-			flatShader.setMat4("model", model);
-			nanosuitModel.Draw(flatShader);
+		// camera/view transformation
+		glm::mat4 view = camera.GetViewMatrix();
+		lightingShader.setMat4("view", view);
+
+		// render boxes
+		glBindVertexArray(objectVAO);
+
+		glm::mat4 model = glm::mat4(1.0f);
+
+		for (unsigned int i = 0; i < 10; i++)
+		{
+			// calculate the model matrix for each object and pass it to shader before drawing
+			model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+			model = glm::translate(model, cubePositions[i]);
+			float angle = 20.0f * i;
+			model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+			lightingShader.setMat4("model", model);
+
+			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
+
+		//lamp drawing
+		glBindVertexArray(lampVAO);
+		lampShader.use();
+		lampShader.setMat4("projection", projection);
+		lampShader.setMat4("view", view);
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, lampPos);
+		model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+		lampShader.setMat4("model", model);
+
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+
+	// optional: de-allocate all resources once they've outlived their purpose:
+	// ------------------------------------------------------------------------
+	glDeleteVertexArrays(1, &objectVAO);
+	glDeleteBuffers(1, &VBO);
 
 	// glfw: terminate, clearing all previously allocated GLFW resources.
 	// ------------------------------------------------------------------
@@ -227,41 +296,23 @@ int main()
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
-void processInput(GLFWwindow *window, bool &fancy)
+void processInput(GLFWwindow *window)
 {
-	bool sprint = 0;
-
-	//exit program
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 
-	//forward
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-		if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL)) {
-			sprint = 1;
-		}
-		camera.ProcessKeyboard(FORWARD, deltaTime, sprint);
-	}
-
-	//backwards
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		camera.ProcessKeyboard(FORWARD, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		camera.ProcessKeyboard(BACKWARD, deltaTime, sprint);
-
-	//left
+		camera.ProcessKeyboard(BACKWARD, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		camera.ProcessKeyboard(LEFT, deltaTime, sprint);
-
-	//right
+		camera.ProcessKeyboard(LEFT, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		camera.ProcessKeyboard(RIGHT, deltaTime, sprint);
-
-	//up
+		camera.ProcessKeyboard(RIGHT, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-		camera.ProcessKeyboard(UP, deltaTime, sprint);
-
-	//down
+		camera.ProcessKeyboard(UP, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
-		camera.ProcessKeyboard(DOWN, deltaTime, sprint);
+		camera.ProcessKeyboard(DOWN, deltaTime);
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
@@ -301,17 +352,42 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 	camera.ProcessMouseScroll(yoffset);
 }
 
-//switches shaders
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+unsigned int loadTexture(char const * path)
 {
-	if (key == GLFW_KEY_F && action == GLFW_PRESS) {
-		if (fancy) {
-			fancy = 0;
-		}
-		else {
-			fancy = 1;
-		}
+	//gen texture and handle
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+
+	int width, height, nrComponents;
+	unsigned char *data = stbi_load(path, &width, &height, &nrComponents, 0);
+	if (data)
+	{
+		//check which format
+		GLenum format;
+		if (nrComponents == 1) 
+			format = GL_RED;
+		else if (nrComponents == 3) 
+			format = GL_RGB;
+		else if (nrComponents == 4) 
+			format = GL_RGBA;
+
+		//settings for the texture
+		glBindTexture(GL_TEXTURE_2D, textureID);
+		glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+		stbi_image_free(data);
 	}
+	else
+	{
+		std::cout << "Texture failed to load at path: " << path << std::endl;
+		stbi_image_free(data);
+	}
+
+	return textureID;
 }
-
-
