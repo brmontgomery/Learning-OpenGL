@@ -52,5 +52,11 @@
     <None Include="Shaders\lampShader.vert">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="directionalLightShader.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="directionalLightShader.vert">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

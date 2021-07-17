@@ -30,6 +30,8 @@
     <ClInclude Include="Shaders.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="directionalLightShader.frag" />
+    <None Include="directionalLightShader.vert" />
     <None Include="Shaders\lampShader.frag" />
     <None Include="Shaders\lampShader.vert" />
     <None Include="Shaders\lightingShader.frag" />

@@ -20,6 +20,7 @@ unsigned int loadTexture(char const * path);
 // settings
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
+bool isCursorDisabled = true;
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -85,6 +86,7 @@ int main()
 
 	// build and compile our shader zprogram
 	// ------------------------------------
+	Shader directionalLightShader("Shaders/lightingShader.vert", "Shaders/lightingShader.frag");
 	Shader lightingShader("Shaders/lightingShader.vert", "Shaders/lightingShader.frag");
 	Shader lampShader("Shaders/lampShader.vert", "Shaders/lampShader.frag");
 
@@ -192,6 +194,15 @@ int main()
 	lightingShader.setInt("material.specular", 1);
 	lightingShader.setInt("material.emission", 2);
 
+	//if using directional light (Sun)
+	/*
+	directionalLightShader.use();
+	directionalLightShader.setInt("material.diffuse", 0);
+	directionalLightShader.setInt("material.specular", 1);
+	directionalLightShader.setInt("material.emission", 2);
+	*/
+
+
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
@@ -221,15 +232,35 @@ int main()
 		lightColor.z = sin(glfwGetTime() * 1.7f);*/
 
 		// be sure to activate shader when setting uniforms/drawing objects
+
 		lightingShader.use();
 		lightingShader.setVec3("viewPos", camera.Position);
-		lightingShader.setVec3("lightPos", lampPos);
+		lightingShader.setVec3("LightPos", lampPos);
 
 		lightingShader.setFloat("material.shininess", 32.0f);
 
 		lightingShader.setVec3("light.ambient", lightColor * glm::vec3(0.1f));
 		lightingShader.setVec3("light.diffuse", lightColor * glm::vec3(0.7f)); 
 		lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+
+		lightingShader.setFloat("light.constant", 1.0f);
+		lightingShader.setFloat("light.linear", 0.09f);
+		lightingShader.setFloat("light.quadratic", 0.032f);
+
+		//if using directional light (Sun)
+		/*
+		directionalLightShader.use();
+		directionalLightShader.setVec3("viewPos", camera.Position);
+		directionalLightShader.setVec3("lightPos", lampPos);
+
+		directionalLightShader.setFloat("material.shininess", 32.0f);
+
+		directionalLightShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+
+		directionalLightShader.setVec3("light.ambient", lightColor* glm::vec3(0.1f));
+		directionalLightShader.setVec3("light.diffuse", lightColor* glm::vec3(0.7f));
+		directionalLightShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+		*/
 
 
 		// bind textures on corresponding texture units
@@ -302,6 +333,16 @@ void processInput(GLFWwindow *window)
 
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
+
+	if (glfwGetKey(window, GLFW_KEY_PERIOD) == GLFW_PRESS)
+		if (isCursorDisabled) {
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+			isCursorDisabled = false;
+		}
+		else {
+			glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+			isCursorDisabled = true;
+		}
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		camera.ProcessKeyboard(FORWARD, deltaTime, sprint);
