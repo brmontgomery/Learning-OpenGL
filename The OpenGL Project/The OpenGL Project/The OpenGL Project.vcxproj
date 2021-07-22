@@ -32,10 +32,14 @@
   <ItemGroup>
     <None Include="directionalLightShader.frag" />
     <None Include="directionalLightShader.vert" />
+    <None Include="pointLightShader.frag" />
+    <None Include="pointLightShader.vert" />
     <None Include="Shaders\lampShader.frag" />
     <None Include="Shaders\lampShader.vert" />
     <None Include="Shaders\lightingShader.frag" />
     <None Include="Shaders\lightingShader.vert" />
+    <None Include="SpotlightShader.frag" />
+    <None Include="SpotlightShader.vert" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

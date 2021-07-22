@@ -194,15 +194,6 @@ int main()
 	lightingShader.setInt("material.specular", 1);
 	lightingShader.setInt("material.emission", 2);
 
-	//if using directional light (Sun)
-	/*
-	directionalLightShader.use();
-	directionalLightShader.setInt("material.diffuse", 0);
-	directionalLightShader.setInt("material.specular", 1);
-	directionalLightShader.setInt("material.emission", 2);
-	*/
-
-
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
@@ -223,19 +214,16 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		lampPos.x = 2.0f * sin(glfwGetTime());
-
 		glm::vec3 lightColor = glm::vec3(1.0f);
-		//changing colors for lamp light
-		/*lightColor.x = sin(glfwGetTime() * 1.3f);
-		lightColor.y = sin(glfwGetTime() * 0.7f);
-		lightColor.z = sin(glfwGetTime() * 1.7f);*/
 
 		// be sure to activate shader when setting uniforms/drawing objects
 
 		lightingShader.use();
 		lightingShader.setVec3("viewPos", camera.Position);
-		lightingShader.setVec3("LightPos", lampPos);
+		lightingShader.setVec3("light.position", camera.Position);
+		lightingShader.setVec3("light.direction", camera.Front);
+		lightingShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
+		lightingShader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
 
 		lightingShader.setFloat("material.shininess", 32.0f);
 
@@ -246,22 +234,6 @@ int main()
 		lightingShader.setFloat("light.constant", 1.0f);
 		lightingShader.setFloat("light.linear", 0.09f);
 		lightingShader.setFloat("light.quadratic", 0.032f);
-
-		//if using directional light (Sun)
-		/*
-		directionalLightShader.use();
-		directionalLightShader.setVec3("viewPos", camera.Position);
-		directionalLightShader.setVec3("lightPos", lampPos);
-
-		directionalLightShader.setFloat("material.shininess", 32.0f);
-
-		directionalLightShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
-
-		directionalLightShader.setVec3("light.ambient", lightColor* glm::vec3(0.1f));
-		directionalLightShader.setVec3("light.diffuse", lightColor* glm::vec3(0.7f));
-		directionalLightShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-		*/
-
 
 		// bind textures on corresponding texture units
 		glActiveTexture(GL_TEXTURE0);
@@ -297,7 +269,7 @@ int main()
 		}
 
 		//lamp drawing
-		glBindVertexArray(lampVAO);
+		/*glBindVertexArray(lampVAO);
 		lampShader.use();
 		lampShader.setMat4("projection", projection);
 		lampShader.setMat4("view", view);
@@ -307,6 +279,7 @@ int main()
 		lampShader.setMat4("model", model);
 
 		glDrawArrays(GL_TRIANGLES, 0, 36);
+		*/
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------

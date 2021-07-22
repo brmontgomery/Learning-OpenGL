@@ -58,5 +58,17 @@
     <None Include="directionalLightShader.vert">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="pointLightShader.vert">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="pointLightShader.frag">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="SpotlightShader.vert">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="SpotlightShader.frag">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
