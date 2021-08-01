@@ -159,6 +159,9 @@
     <ClInclude Include="include\assimp\color4.inl">
       <Filter>include\assimp</Filter>
     </ClInclude>
+    <ClInclude Include="include\assimp\config.h">
+      <Filter>include\assimp</Filter>
+    </ClInclude>
     <ClInclude Include="include\assimp\defs.h">
       <Filter>include\assimp</Filter>
     </ClInclude>

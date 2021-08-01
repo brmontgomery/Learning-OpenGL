@@ -31,6 +31,7 @@ project "assimp"
     {
         "contrib/irrXML/",
         "contrib/unzip/",
+        "contrib/zlib/",
         "contrib/rapidjson/include/",
         "code",
         "include"
