@@ -80,8 +80,8 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4201;4100;4189;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;ASSIMP_BUILD_NO_3D_IMPORTER;ASSIMP_BUILD_NO_3DS_IMPORTER;ASSIMP_BUILD_NO_3MF_IMPORTER;ASSIMP_BUILD_NO_AC_IMPORTER;ASSIMP_BUILD_NO_AMF_IMPORTER;ASSIMP_BUILD_NO_ASE_IMPORTER;ASSIMP_BUILD_NO_B3D_IMPORTER;ASSIMP_BUILD_NO_BLEND_IMPORTER;ASSIMP_BUILD_NO_BVH_IMPORTER;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_BUILD_NO_COB_IMPORTER;ASSIMP_BUILD_NO_CSM_IMPORTER;ASSIMP_BUILD_NO_DXF_IMPORTER;ASSIMP_BUILD_NO_GLTF_IMPORTER;ASSIMP_BUILD_NO_HMP_IMPORTER;ASSIMP_BUILD_NO_IFC_IMPORTER;ASSIMP_BUILD_NO_IRR_IMPORTER;ASSIMP_BUILD_NO_IRRMESH_IMPORTER;ASSIMP_BUILD_NO_LWO_IMPORTER;ASSIMP_BUILD_NO_LWS_IMPORTER;ASSIMP_BUILD_NO_M3D_IMPORTER;ASSIMP_BUILD_NO_MD2_IMPORTER;ASSIMP_BUILD_NO_MD3_IMPORTER;ASSIMP_BUILD_NO_MD5_IMPORTER;ASSIMP_BUILD_NO_MDC_IMPORTER;ASSIMP_BUILD_NO_MDL_IMPORTER;ASSIMP_BUILD_NO_MMD_IMPORTER;ASSIMP_BUILD_NO_MS3D_IMPORTER;ASSIMP_BUILD_NO_NDO_IMPORTER;ASSIMP_BUILD_NO_NFF_IMPORTER;ASSIMP_BUILD_NO_OFF_IMPORTER;ASSIMP_BUILD_NO_OGRE_IMPORTER;ASSIMP_BUILD_NO_OPENGEX_IMPORTER;ASSIMP_BUILD_NO_PLY_IMPORTER;ASSIMP_BUILD_NO_Q3BSP_IMPORTER;ASSIMP_BUILD_NO_Q3D_IMPORTER;ASSIMP_BUILD_NO_RAW_IMPORTER;ASSIMP_BUILD_NO_SIB_IMPORTER;ASSIMP_BUILD_NO_SMD_IMPORTER;ASSIMP_BUILD_NO_STEP_IMPORTER;ASSIMP_BUILD_NO_STL_IMPORTER;ASSIMP_BUILD_NO_TERRAGEN_IMPORTER;ASSIMP_BUILD_NO_X_IMPORTER;ASSIMP_BUILD_NO_X3D_IMPORTER;ASSIMP_BUILD_NO_XGL_IMPORTER;ASSIMP_BUILD_NO_COLLADA_EXPORTER;ASSIMP_BUILD_NO_X_EXPORTER;ASSIMP_BUILD_NO_STEP_EXPORTER;ASSIMP_BUILD_NO_OBJ_EXPORTER;ASSIMP_BUILD_NO_STL_EXPORTER;ASSIMP_BUILD_NO_PLY_EXPORTER;ASSIMP_BUILD_NO_3DS_EXPORTER;ASSIMP_BUILD_NO_GLTF_EXPORTER;ASSIMP_BUILD_NO_ASSXML_EXPORTER;ASSIMP_BUILD_NO_X3D_EXPORTER;ASSIMP_BUILD_NO_FBX_EXPORTER;ASSIMP_BUILD_NO_M3D_EXPORTER;ASSIMP_BUILD_NO_3MF_EXPORTER;ASSIMP_BUILD_NO_ASSJSON_EXPORTER;_CRT_SECURE_NO_WARNINGS;UNICODE;OpenGLProject_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>EngineSrc;..\vendor\spdlog\include;..\vendor\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;UNICODE;OpenGLProject_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>EngineSrc;..\vendor\spdlog\include;..\vendor\assimp\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -94,7 +94,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp\assimp\bin\Debug-windows-x86_64\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -102,8 +102,8 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4201;4100;4189;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;ASSIMP_BUILD_NO_3D_IMPORTER;ASSIMP_BUILD_NO_3DS_IMPORTER;ASSIMP_BUILD_NO_3MF_IMPORTER;ASSIMP_BUILD_NO_AC_IMPORTER;ASSIMP_BUILD_NO_AMF_IMPORTER;ASSIMP_BUILD_NO_ASE_IMPORTER;ASSIMP_BUILD_NO_B3D_IMPORTER;ASSIMP_BUILD_NO_BLEND_IMPORTER;ASSIMP_BUILD_NO_BVH_IMPORTER;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_BUILD_NO_COB_IMPORTER;ASSIMP_BUILD_NO_CSM_IMPORTER;ASSIMP_BUILD_NO_DXF_IMPORTER;ASSIMP_BUILD_NO_GLTF_IMPORTER;ASSIMP_BUILD_NO_HMP_IMPORTER;ASSIMP_BUILD_NO_IFC_IMPORTER;ASSIMP_BUILD_NO_IRR_IMPORTER;ASSIMP_BUILD_NO_IRRMESH_IMPORTER;ASSIMP_BUILD_NO_LWO_IMPORTER;ASSIMP_BUILD_NO_LWS_IMPORTER;ASSIMP_BUILD_NO_M3D_IMPORTER;ASSIMP_BUILD_NO_MD2_IMPORTER;ASSIMP_BUILD_NO_MD3_IMPORTER;ASSIMP_BUILD_NO_MD5_IMPORTER;ASSIMP_BUILD_NO_MDC_IMPORTER;ASSIMP_BUILD_NO_MDL_IMPORTER;ASSIMP_BUILD_NO_MMD_IMPORTER;ASSIMP_BUILD_NO_MS3D_IMPORTER;ASSIMP_BUILD_NO_NDO_IMPORTER;ASSIMP_BUILD_NO_NFF_IMPORTER;ASSIMP_BUILD_NO_OFF_IMPORTER;ASSIMP_BUILD_NO_OGRE_IMPORTER;ASSIMP_BUILD_NO_OPENGEX_IMPORTER;ASSIMP_BUILD_NO_PLY_IMPORTER;ASSIMP_BUILD_NO_Q3BSP_IMPORTER;ASSIMP_BUILD_NO_Q3D_IMPORTER;ASSIMP_BUILD_NO_RAW_IMPORTER;ASSIMP_BUILD_NO_SIB_IMPORTER;ASSIMP_BUILD_NO_SMD_IMPORTER;ASSIMP_BUILD_NO_STEP_IMPORTER;ASSIMP_BUILD_NO_STL_IMPORTER;ASSIMP_BUILD_NO_TERRAGEN_IMPORTER;ASSIMP_BUILD_NO_X_IMPORTER;ASSIMP_BUILD_NO_X3D_IMPORTER;ASSIMP_BUILD_NO_XGL_IMPORTER;ASSIMP_BUILD_NO_COLLADA_EXPORTER;ASSIMP_BUILD_NO_X_EXPORTER;ASSIMP_BUILD_NO_STEP_EXPORTER;ASSIMP_BUILD_NO_OBJ_EXPORTER;ASSIMP_BUILD_NO_STL_EXPORTER;ASSIMP_BUILD_NO_PLY_EXPORTER;ASSIMP_BUILD_NO_3DS_EXPORTER;ASSIMP_BUILD_NO_GLTF_EXPORTER;ASSIMP_BUILD_NO_ASSXML_EXPORTER;ASSIMP_BUILD_NO_X3D_EXPORTER;ASSIMP_BUILD_NO_FBX_EXPORTER;ASSIMP_BUILD_NO_M3D_EXPORTER;ASSIMP_BUILD_NO_3MF_EXPORTER;ASSIMP_BUILD_NO_ASSJSON_EXPORTER;_CRT_SECURE_NO_WARNINGS;UNICODE;OpenGLProject_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>EngineSrc;..\vendor\spdlog\include;..\vendor\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;UNICODE;OpenGLProject_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>EngineSrc;..\vendor\spdlog\include;..\vendor\assimp\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -119,7 +119,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp\assimp\bin\Debug-windows-x86_64\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -127,8 +127,8 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4201;4100;4189;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;ASSIMP_BUILD_NO_3D_IMPORTER;ASSIMP_BUILD_NO_3DS_IMPORTER;ASSIMP_BUILD_NO_3MF_IMPORTER;ASSIMP_BUILD_NO_AC_IMPORTER;ASSIMP_BUILD_NO_AMF_IMPORTER;ASSIMP_BUILD_NO_ASE_IMPORTER;ASSIMP_BUILD_NO_B3D_IMPORTER;ASSIMP_BUILD_NO_BLEND_IMPORTER;ASSIMP_BUILD_NO_BVH_IMPORTER;ASSIMP_BUILD_NO_C4D_IMPORTER;ASSIMP_BUILD_NO_COB_IMPORTER;ASSIMP_BUILD_NO_CSM_IMPORTER;ASSIMP_BUILD_NO_DXF_IMPORTER;ASSIMP_BUILD_NO_GLTF_IMPORTER;ASSIMP_BUILD_NO_HMP_IMPORTER;ASSIMP_BUILD_NO_IFC_IMPORTER;ASSIMP_BUILD_NO_IRR_IMPORTER;ASSIMP_BUILD_NO_IRRMESH_IMPORTER;ASSIMP_BUILD_NO_LWO_IMPORTER;ASSIMP_BUILD_NO_LWS_IMPORTER;ASSIMP_BUILD_NO_M3D_IMPORTER;ASSIMP_BUILD_NO_MD2_IMPORTER;ASSIMP_BUILD_NO_MD3_IMPORTER;ASSIMP_BUILD_NO_MD5_IMPORTER;ASSIMP_BUILD_NO_MDC_IMPORTER;ASSIMP_BUILD_NO_MDL_IMPORTER;ASSIMP_BUILD_NO_MMD_IMPORTER;ASSIMP_BUILD_NO_MS3D_IMPORTER;ASSIMP_BUILD_NO_NDO_IMPORTER;ASSIMP_BUILD_NO_NFF_IMPORTER;ASSIMP_BUILD_NO_OFF_IMPORTER;ASSIMP_BUILD_NO_OGRE_IMPORTER;ASSIMP_BUILD_NO_OPENGEX_IMPORTER;ASSIMP_BUILD_NO_PLY_IMPORTER;ASSIMP_BUILD_NO_Q3BSP_IMPORTER;ASSIMP_BUILD_NO_Q3D_IMPORTER;ASSIMP_BUILD_NO_RAW_IMPORTER;ASSIMP_BUILD_NO_SIB_IMPORTER;ASSIMP_BUILD_NO_SMD_IMPORTER;ASSIMP_BUILD_NO_STEP_IMPORTER;ASSIMP_BUILD_NO_STL_IMPORTER;ASSIMP_BUILD_NO_TERRAGEN_IMPORTER;ASSIMP_BUILD_NO_X_IMPORTER;ASSIMP_BUILD_NO_X3D_IMPORTER;ASSIMP_BUILD_NO_XGL_IMPORTER;ASSIMP_BUILD_NO_COLLADA_EXPORTER;ASSIMP_BUILD_NO_X_EXPORTER;ASSIMP_BUILD_NO_STEP_EXPORTER;ASSIMP_BUILD_NO_OBJ_EXPORTER;ASSIMP_BUILD_NO_STL_EXPORTER;ASSIMP_BUILD_NO_PLY_EXPORTER;ASSIMP_BUILD_NO_3DS_EXPORTER;ASSIMP_BUILD_NO_GLTF_EXPORTER;ASSIMP_BUILD_NO_ASSXML_EXPORTER;ASSIMP_BUILD_NO_X3D_EXPORTER;ASSIMP_BUILD_NO_FBX_EXPORTER;ASSIMP_BUILD_NO_M3D_EXPORTER;ASSIMP_BUILD_NO_3MF_EXPORTER;ASSIMP_BUILD_NO_ASSJSON_EXPORTER;_CRT_SECURE_NO_WARNINGS;UNICODE;OpenGLProject_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>EngineSrc;..\vendor\spdlog\include;..\vendor\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;UNICODE;OpenGLProject_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>EngineSrc;..\vendor\spdlog\include;..\vendor\assimp\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -144,52 +144,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp\assimp\bin\Debug-windows-x86_64\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\vendor\KHR\khrplatform.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\Compiler\poppack1.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\Compiler\pstdint.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\Compiler\pushpack1.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\DefaultIOStream.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\DefaultIOSystem.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\DefaultLogger.hpp" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\Defines.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\Exporter.hpp" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\IOStream.hpp" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\IOSystem.hpp" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\Importer.hpp" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\LogStream.hpp" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\Logger.hpp" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\NullLogger.hpp" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\ProgressHandler.hpp" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\SceneCombiner.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\ai_assert.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\anim.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\camera.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\cexport.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\cfileio.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\cimport.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\color4.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\config.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\defs.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\importerdesc.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\light.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\material.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\matrix3x3.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\matrix4x4.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\mesh.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\metadata.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\postprocess.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\quaternion.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\scene.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\texture.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\types.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\vector2.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\vector3.h" />
-    <ClInclude Include="..\vendor\assimp\include\assimp\version.h" />
     <ClInclude Include="..\vendor\glm\glm\common.hpp" />
     <ClInclude Include="..\vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="..\vendor\glm\glm\detail\_fixes.hpp" />
@@ -619,6 +578,9 @@
     </ProjectReference>
     <ProjectReference Include="..\vendor\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\vendor\assimp\assimp\assimp.vcxproj">
+      <Project>{724885F2-5EEA-AFC8-47A5-C31C33E63619}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

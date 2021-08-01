@@ -34,7 +34,7 @@ outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["Assimp"] = "vendor/assimp/include"
+IncludeDir["Assimp"] = "vendor/assimp/assimp/include"
 IncludeDir["GLFW"] = "vendor/GLFW/include"
 IncludeDir["Glad"] = "vendor/Glad/include"
 IncludeDir["glm"] = "vendor/glm"
@@ -46,6 +46,7 @@ Library = {}
 group "Dependencies"
 	include "vendor/GLFW"
 	include "vendor/Glad"
+	include "vendor/assimp/assimp"
 
 group ""
 
@@ -63,9 +64,6 @@ project "The OpenGL Project"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-		"vendor/assimp/include/assimp/**.h",
-		"vendor/assimp/include/assimp/**.hpp",
-		"vendor/assimp/include/assimp/**.c",
 		"vendor/glm/glm/**.hpp",
 		"vendor/glm/glm/**.inl",
 		"vendor/KHR/**.h",
@@ -98,7 +96,7 @@ project "The OpenGL Project"
 	libdirs { 
 		"vendor/glfw/bin/Debug-windows-x86_64/glfw",
 		"vendor/Glad/bin/Debug-windows-x86_64/Glad",
-		"vendor/assimp"
+		"vendor/assimp/assimp/bin/Debug-windows-x86_64/assimp"
 	}
 
 	links 
@@ -106,78 +104,7 @@ project "The OpenGL Project"
 		"GLFW",
 		"Glad",
 		"opengl32.lib",
-		"assimp-vc140-mt.dll"
-	}
-
-	-- Importers
-	defines {
-		'ASSIMP_BUILD_NO_3D_IMPORTER',
-		'ASSIMP_BUILD_NO_3DS_IMPORTER',
-		'ASSIMP_BUILD_NO_3MF_IMPORTER',
-		'ASSIMP_BUILD_NO_AC_IMPORTER',
-		'ASSIMP_BUILD_NO_AMF_IMPORTER',
-		'ASSIMP_BUILD_NO_ASE_IMPORTER',
-		-- 'ASSIMP_BUILD_NO_ASSBIN_IMPORTER'
-		'ASSIMP_BUILD_NO_B3D_IMPORTER',
-		'ASSIMP_BUILD_NO_BLEND_IMPORTER',
-		'ASSIMP_BUILD_NO_BVH_IMPORTER',
-		'ASSIMP_BUILD_NO_C4D_IMPORTER',
-		'ASSIMP_BUILD_NO_COB_IMPORTER',
-		-- 'ASSIMP_BUILD_NO_COLLADA_IMPORTER',
-		'ASSIMP_BUILD_NO_CSM_IMPORTER',
-		'ASSIMP_BUILD_NO_DXF_IMPORTER',
-		-- 'ASSIMP_BUILD_NO_FBX_IMPORTER',
-		'ASSIMP_BUILD_NO_GLTF_IMPORTER',
-		'ASSIMP_BUILD_NO_HMP_IMPORTER',
-		'ASSIMP_BUILD_NO_IFC_IMPORTER',
-		'ASSIMP_BUILD_NO_IRR_IMPORTER',
-		'ASSIMP_BUILD_NO_IRRMESH_IMPORTER',
-		'ASSIMP_BUILD_NO_LWO_IMPORTER',
-		'ASSIMP_BUILD_NO_LWS_IMPORTER',
-		'ASSIMP_BUILD_NO_M3D_IMPORTER',
-		'ASSIMP_BUILD_NO_MD2_IMPORTER',
-		'ASSIMP_BUILD_NO_MD3_IMPORTER',
-		'ASSIMP_BUILD_NO_MD5_IMPORTER',
-		'ASSIMP_BUILD_NO_MDC_IMPORTER',
-		'ASSIMP_BUILD_NO_MDL_IMPORTER',
-		'ASSIMP_BUILD_NO_MMD_IMPORTER',
-		'ASSIMP_BUILD_NO_MS3D_IMPORTER',
-		'ASSIMP_BUILD_NO_NDO_IMPORTER',
-		'ASSIMP_BUILD_NO_NFF_IMPORTER',
-		-- 'ASSIMP_BUILD_NO_OBJ_IMPORTER',
-		'ASSIMP_BUILD_NO_OFF_IMPORTER',
-		'ASSIMP_BUILD_NO_OGRE_IMPORTER',
-		'ASSIMP_BUILD_NO_OPENGEX_IMPORTER',
-		'ASSIMP_BUILD_NO_PLY_IMPORTER',
-		'ASSIMP_BUILD_NO_Q3BSP_IMPORTER',
-		'ASSIMP_BUILD_NO_Q3D_IMPORTER',
-		'ASSIMP_BUILD_NO_RAW_IMPORTER',
-		'ASSIMP_BUILD_NO_SIB_IMPORTER',
-		'ASSIMP_BUILD_NO_SMD_IMPORTER',
-		'ASSIMP_BUILD_NO_STEP_IMPORTER',
-		'ASSIMP_BUILD_NO_STL_IMPORTER',
-		'ASSIMP_BUILD_NO_TERRAGEN_IMPORTER',
-		'ASSIMP_BUILD_NO_X_IMPORTER',
-		'ASSIMP_BUILD_NO_X3D_IMPORTER',
-		'ASSIMP_BUILD_NO_XGL_IMPORTER'
-	}
-	-- Exporters
-	defines {
-		'ASSIMP_BUILD_NO_COLLADA_EXPORTER',
-		'ASSIMP_BUILD_NO_X_EXPORTER',
-		'ASSIMP_BUILD_NO_STEP_EXPORTER',
-		'ASSIMP_BUILD_NO_OBJ_EXPORTER',
-		'ASSIMP_BUILD_NO_STL_EXPORTER',
-		'ASSIMP_BUILD_NO_PLY_EXPORTER',
-		'ASSIMP_BUILD_NO_3DS_EXPORTER',
-		'ASSIMP_BUILD_NO_GLTF_EXPORTER',
-		-- 'ASSIMP_BUILD_NO_ASSBIN_EXPORTER',
-		'ASSIMP_BUILD_NO_ASSXML_EXPORTER',
-		'ASSIMP_BUILD_NO_X3D_EXPORTER',
-		'ASSIMP_BUILD_NO_FBX_EXPORTER',
-		'ASSIMP_BUILD_NO_M3D_EXPORTER',
-		'ASSIMP_BUILD_NO_3MF_EXPORTER',
-		'ASSIMP_BUILD_NO_ASSJSON_EXPORTER'
+		"assimp"
 	}
 
 	flags { "NoPCH" }
