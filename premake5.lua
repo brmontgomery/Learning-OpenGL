@@ -1,6 +1,6 @@
 workspace "The OpenGL Project"
 	architecture "x86_64"
-	startproject "ErosionSim"
+	startproject "The OpenGL Project"
 
 	configurations
 	{
@@ -34,7 +34,7 @@ outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["Assimp"] = "vendor/assimp/assimp/include"
+IncludeDir["assimp"] = "vendor/assimp/assimp/include"
 IncludeDir["GLFW"] = "vendor/GLFW/include"
 IncludeDir["Glad"] = "vendor/Glad/include"
 IncludeDir["glm"] = "vendor/glm"
@@ -46,7 +46,6 @@ Library = {}
 group "Dependencies"
 	include "vendor/GLFW"
 	include "vendor/Glad"
-	include "vendor/assimp/assimp"
 
 group ""
 
@@ -64,12 +63,15 @@ project "The OpenGL Project"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"vendor/assimp/assimp/include/assimp/**.h",
+		"vendor/assimp/assimp/include/assimp/**.hpp",
 		"vendor/glm/glm/**.hpp",
 		"vendor/glm/glm/**.inl",
 		"vendor/KHR/**.h",
 		"vendor/spdlog/include/**.h",
 		"vendor/spdlog/include/**.cpp",
 		"vendor/stb-master/stb-master/stb_image.h",
+		"%{prj.name}/assets/**",
 
 		--"assets/shaders/**.spv",
 		--"assets/models/**.obj",
@@ -84,9 +86,9 @@ project "The OpenGL Project"
 
 	includedirs
 	{
-		"%{prj.name}/EngineSrc",
+		"%{prj.name}/src",
 		"vendor/spdlog/include",
-		"%{IncludeDir.Assimp}",
+		"%{IncludeDir.assimp}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.Glad}",
@@ -96,7 +98,9 @@ project "The OpenGL Project"
 	libdirs { 
 		"vendor/glfw/bin/Debug-windows-x86_64/glfw",
 		"vendor/Glad/bin/Debug-windows-x86_64/Glad",
-		"vendor/assimp/assimp/bin/Debug-windows-x86_64/assimp"
+		"vendor/assimp/assimp/build/code/Debug",
+		"vendor/assimp/assimp/build/contrib/irrXML/Debug",
+		"vendor/assimp/assimp/build/contrib/zlib/Debug"
 	}
 
 	links 
@@ -104,10 +108,26 @@ project "The OpenGL Project"
 		"GLFW",
 		"Glad",
 		"opengl32.lib",
-		"assimp"
+		"assimp-vc140-mt.lib",
+		"IrrXML.lib",
+		"zlibd.lib"
 	}
 
 	flags { "NoPCH" }
+
+	--resources
+	filter "files:**.png"
+		buildaction "Embed"
+	filter "files:**.jpg"
+		buildaction "Embed"
+	filter "files:**.gltf"
+		buildaction "Embed"
+	filter "files:**.fbx"
+		buildaction "Embed"
+	filter "files:**.vert"
+		buildaction "Embed"
+	filter "files:**.frag"
+		buildaction "Embed"
 
 	filter "system:windows"
 		systemversion "latest"

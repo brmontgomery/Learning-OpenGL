@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+D:/Learning-OpenGL/vendor/assimp/assimp/cmake-modules/FindDirectX.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/cmake-modules/FindPkgMacros.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/tools/assimp_view/CMakeLists.txt

@@ -1,0 +1,6 @@
+D:/Learning-OpenGL/vendor/assimp/assimp/contrib/zlib/CMakeFiles/zlib.dir
+D:/Learning-OpenGL/vendor/assimp/assimp/contrib/zlib/CMakeFiles/zlibstatic.dir
+D:/Learning-OpenGL/vendor/assimp/assimp/contrib/zlib/CMakeFiles/INSTALL.dir
+D:/Learning-OpenGL/vendor/assimp/assimp/contrib/zlib/CMakeFiles/RUN_TESTS.dir
+D:/Learning-OpenGL/vendor/assimp/assimp/contrib/zlib/CMakeFiles/ALL_BUILD.dir
+D:/Learning-OpenGL/vendor/assimp/assimp/contrib/zlib/CMakeFiles/ZERO_CHECK.dir

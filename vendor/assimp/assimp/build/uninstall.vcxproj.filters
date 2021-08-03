@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\Learning-OpenGL\vendor\assimp\assimp\build\CMakeFiles\9e98892aa7da5418bb1c3dfe33ba0419\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\Learning-OpenGL\vendor\assimp\assimp\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Learning-OpenGL\vendor\assimp\assimp\build\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{E522CF22-23C6-309D-AF4C-8737EC316C2B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="assets">
+      <UniqueIdentifier>{583885F2-44DA-AFC8-2D95-C31C19D63619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\Shaders">
+      <UniqueIdentifier>{3135E839-1D03-DC3F-0697-4C66F203B8A4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\models">
+      <UniqueIdentifier>{2B0B5C10-97CB-D746-6006-21C4CC851C23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\models\nanosuit">
+      <UniqueIdentifier>{EB2C8374-D726-ACC6-C093-42D7AC2C1233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\models\nanosuit\crysis_nano_suit_2">
+      <UniqueIdentifier>{37E848FA-A302-AC9B-EC24-BC2F587ED3A2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\models\nanosuit\crysis_nano_suit_2\textures">
+      <UniqueIdentifier>{0A84DA6C-F617-D014-5FDC-29C94B8F0A07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\textures">
+      <UniqueIdentifier>{4B894D3B-B714-BBFF-C025-3EF42C301700}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\AssetClasses">
+      <UniqueIdentifier>{8A2367BE-761C-8610-9F4E-6B958BA6651C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Base">
+      <UniqueIdentifier>{D70B1CCF-C3D8-76DA-ECF1-6482D81DAC68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Utility">
+      <UniqueIdentifier>{70464FB2-DCFB-C7A7-65F0-C17ED1A4BEAB}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor\KHR">
       <UniqueIdentifier>{A723C5A8-93DB-06F6-FCE2-DF51E8B9A1E6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\assimp">
+      <UniqueIdentifier>{6F57A1F8-DB17-1D2F-A452-66AC10D2610B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\assimp\assimp">
+      <UniqueIdentifier>{AB2FFCB5-97BE-857F-40DD-997A2C4B9625}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\assimp\assimp\include">
+      <UniqueIdentifier>{1ED26794-0A8D-5740-B344-D08A9FDEA1D0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\assimp\assimp\include\assimp">
+      <UniqueIdentifier>{7AEF7577-E6A8-E021-6F08-FBFBDBC09691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\assimp\assimp\include\assimp\Compiler">
+      <UniqueIdentifier>{24389814-104B-986D-B934-755AA52635BB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\assimp\assimp\include\assimp\port">
+      <UniqueIdentifier>{2E7DAA09-1AFA-9D4C-4377-9E602F533AE0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\assimp\assimp\include\assimp\port\AndroidJNI">
+      <UniqueIdentifier>{BFCEA037-2BE0-48DE-B431-DB1D2042D217}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor\glm">
       <UniqueIdentifier>{829FC5A8-6E57-07F6-D75E-E051C335A2E6}</UniqueIdentifier>
@@ -28,6 +79,30 @@
     <Filter Include="vendor\glm\glm\gtx">
       <UniqueIdentifier>{B3A6A76B-9F8A-68C1-08EB-6214F4ED5243}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\spdlog">
+      <UniqueIdentifier>{8BBC5F22-F77C-DB58-C0B7-24D62C372035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\spdlog\include">
+      <UniqueIdentifier>{FE3E7AAE-6AAB-35A9-339F-CD069FCA5711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\spdlog\include\spdlog">
+      <UniqueIdentifier>{76856FF2-6240-5F9E-0BF8-D7E8F791A92E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\spdlog\include\spdlog\cfg">
+      <UniqueIdentifier>{F5C81C01-E119-0843-0A7E-F604F62D9BAC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\spdlog\include\spdlog\details">
+      <UniqueIdentifier>{EB8B59AF-D772-1BA7-80C3-81C46C89940D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\spdlog\include\spdlog\fmt">
+      <UniqueIdentifier>{ACD61C01-9827-0843-C18B-F604AD3B9BAC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\spdlog\include\spdlog\fmt\bundled">
+      <UniqueIdentifier>{99E1FA97-855E-EEDA-AEDB-EEEE9AB78A6E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\spdlog\include\spdlog\sinks">
+      <UniqueIdentifier>{6D3396BC-596F-9926-C281-B11DAEDC4141}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor\stb-master">
       <UniqueIdentifier>{0457B490-706D-B226-B9E4-3D48253A83AE}</UniqueIdentifier>
     </Filter>
@@ -38,6 +113,129 @@
   <ItemGroup>
     <ClInclude Include="..\vendor\KHR\khrplatform.h">
       <Filter>vendor\KHR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Compiler\poppack1.h">
+      <Filter>vendor\assimp\assimp\include\assimp\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Compiler\pstdint.h">
+      <Filter>vendor\assimp\assimp\include\assimp\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Compiler\pushpack1.h">
+      <Filter>vendor\assimp\assimp\include\assimp\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\DefaultIOStream.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\DefaultIOSystem.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\DefaultLogger.hpp">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Defines.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Exporter.hpp">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\IOStream.hpp">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\IOSystem.hpp">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Importer.hpp">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\LogStream.hpp">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Logger.hpp">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\NullLogger.hpp">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\ProgressHandler.hpp">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\SceneCombiner.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\ai_assert.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\anim.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\camera.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\cexport.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\cfileio.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\cimport.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\color4.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\config.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\defs.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\importerdesc.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\light.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\material.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\matrix3x3.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\matrix4x4.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\mesh.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\metadata.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h">
+      <Filter>vendor\assimp\assimp\include\assimp\port\AndroidJNI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\postprocess.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\quaternion.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\scene.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\texture.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\types.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\vector2.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\vector3.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\version.h">
+      <Filter>vendor\assimp\assimp\include\assimp</Filter>
     </ClInclude>
     <ClInclude Include="..\vendor\glm\glm\common.hpp">
       <Filter>vendor\glm\glm</Filter>
@@ -1278,28 +1476,420 @@
     <ClInclude Include="..\vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\async.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\async_logger-inl.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\async_logger.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\cfg\argv.h">
+      <Filter>vendor\spdlog\include\spdlog\cfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\cfg\env.h">
+      <Filter>vendor\spdlog\include\spdlog\cfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\cfg\helpers-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\cfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\cfg\helpers.h">
+      <Filter>vendor\spdlog\include\spdlog\cfg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\common-inl.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\common.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\backtracer-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\backtracer.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\circular_q.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\console_globals.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\file_helper-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\file_helper.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\fmt_helper.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\log_msg-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\log_msg.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\log_msg_buffer-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\log_msg_buffer.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\mpmc_blocking_q.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\null_mutex.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\os-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\os.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\periodic_worker-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\periodic_worker.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\registry-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\registry.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\synchronous_factory.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\tcp_client-windows.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\tcp_client.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\thread_pool-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\thread_pool.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\windows_include.h">
+      <Filter>vendor\spdlog\include\spdlog\details</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bin_to_hex.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\chrono.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\color.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\compile.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\core.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\format-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\format.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\locale.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\os.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\ostream.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\posix.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\printf.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\ranges.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt\bundled</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\chrono.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\fmt.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\ostr.h">
+      <Filter>vendor\spdlog\include\spdlog\fmt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\formatter.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fwd.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\logger-inl.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\logger.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\pattern_formatter-inl.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\pattern_formatter.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\android_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\ansicolor_sink-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\ansicolor_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\base_sink-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\base_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\basic_file_sink-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\basic_file_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\daily_file_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\dist_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\dup_filter_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\hourly_file_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\msvc_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\null_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\ostream_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\ringbuffer_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\rotating_file_sink-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\rotating_file_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\sink-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\stdout_color_sinks-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\stdout_color_sinks.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\stdout_sinks-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\stdout_sinks.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\syslog_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\systemd_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\tcp_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\win_eventlog_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\wincolor_sink-inl.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\wincolor_sink.h">
+      <Filter>vendor\spdlog\include\spdlog\sinks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\spdlog-inl.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\spdlog.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\stopwatch.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\tweakme.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\version.h">
+      <Filter>vendor\spdlog\include\spdlog</Filter>
+    </ClInclude>
     <ClInclude Include="..\vendor\stb-master\stb-master\stb_image.h">
       <Filter>vendor\stb-master\stb-master</Filter>
     </ClInclude>
-    <ClInclude Include="src\Camera.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\AssetClasses\Mesh.h">
+      <Filter>src\AssetClasses</Filter>
     </ClInclude>
-    <ClInclude Include="src\Mesh.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\AssetClasses\Models.h">
+      <Filter>src\AssetClasses</Filter>
     </ClInclude>
-    <ClInclude Include="src\Models.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\AssetClasses\Shaders.h">
+      <Filter>src\AssetClasses</Filter>
     </ClInclude>
-    <ClInclude Include="src\Shaders.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\Base\Application.h">
+      <Filter>src\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Base\Camera.h">
+      <Filter>src\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Base\Window.h">
+      <Filter>src\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Assert.h">
+      <Filter>src\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Base.h">
+      <Filter>src\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Instrumentor.h">
+      <Filter>src\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Log.h">
+      <Filter>src\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\PlatformDetection.h">
+      <Filter>src\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\TimeStep.h">
+      <Filter>src\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Implementations.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="src\Base\Application.cpp">
+      <Filter>src\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility\Implementations.cpp">
+      <Filter>src\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility\Log.cpp">
+      <Filter>src\Utility</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Shaders\lampShader.frag">
+      <Filter>assets\Shaders</Filter>
+    </None>
+    <None Include="assets\Shaders\lampShader.vert">
+      <Filter>assets\Shaders</Filter>
+    </None>
+    <None Include="assets\Shaders\lightingShader.frag">
+      <Filter>assets\Shaders</Filter>
+    </None>
+    <None Include="assets\Shaders\lightingShader.vert">
+      <Filter>assets\Shaders</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\arm_dif.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\body_dif.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2.zip">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\scene.bin">
+      <Filter>assets\models\nanosuit\crysis_nano_suit_2</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\scene.gltf">
+      <Filter>assets\models\nanosuit\crysis_nano_suit_2</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\Body_baseColor.png">
+      <Filter>assets\models\nanosuit\crysis_nano_suit_2\textures</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\Glass_baseColor.png">
+      <Filter>assets\models\nanosuit\crysis_nano_suit_2\textures</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\Hand_baseColor.png">
+      <Filter>assets\models\nanosuit\crysis_nano_suit_2\textures</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\Helmet_baseColor.png">
+      <Filter>assets\models\nanosuit\crysis_nano_suit_2\textures</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\material_4_baseColor.png">
+      <Filter>assets\models\nanosuit\crysis_nano_suit_2\textures</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\material_baseColor.png">
+      <Filter>assets\models\nanosuit\crysis_nano_suit_2\textures</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\glass_ddn.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\glass_dif.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\hand_dif.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\hand_showroom_ddn.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\hand_showroom_spec.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\helmet_dif.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\helmet_showroom_ddn.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\leg_dif.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\leg_showroom_ddn.png">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\models\nanosuit\scene.fbx">
+      <Filter>assets\models\nanosuit</Filter>
+    </None>
+    <None Include="assets\textures\awesomeface.png">
+      <Filter>assets\textures</Filter>
+    </None>
+    <None Include="assets\textures\container.jpg">
+      <Filter>assets\textures</Filter>
+    </None>
+    <None Include="assets\textures\containerForLightingMapTut.png">
+      <Filter>assets\textures</Filter>
+    </None>
+    <None Include="assets\textures\containerForLightingMapTut_specular.png">
+      <Filter>assets\textures</Filter>
+    </None>
+    <None Include="assets\textures\containerLightingMapEmission.jpg">
+      <Filter>assets\textures</Filter>
+    </None>
   </ItemGroup>
 </Project>

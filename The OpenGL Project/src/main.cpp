@@ -1,3 +1,8 @@
+//---------------------------------------------------------------------------------
+//FileName: main.cpp
+//Author: Brian Montgomery
+//---------------------------------------------------------------------------------
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <stb-master/stb_image.h>
@@ -6,9 +11,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Shaders.h"
-#include "Camera.h"
-#include "Models.h"
+#include "AssetClasses/Shaders.h"
+#include "Base/Camera.h"
+#include "AssetClasses/Models.h"
+
+#include "Utility/Log.h"
 
 #include <iostream>
 
@@ -19,8 +26,8 @@ void processInput(GLFWwindow *window, bool &fancy);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 // settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCR_WIDTH = 1920;
+const unsigned int SCR_HEIGHT = 1080;
 
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -37,6 +44,8 @@ bool fancy = 1;
 
 int main()
 {
+	Log::Init();
+
 	// glfw: initialize and configure
 	// ------------------------------
 	glfwInit();
@@ -55,8 +64,8 @@ int main()
 	int curWidth = SCR_WIDTH;
 	int curHeight = SCR_HEIGHT;
 	if (window == NULL) {
-		std::cout << "Failed to create GLFW window!" << std::endl;
 		glfwTerminate();
+		OPENGLPROJECT_CORE_ERROR("Failed to create GLFW window!");
 		return -1;
 	}
 
@@ -73,12 +82,7 @@ int main()
 
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "Failed to initialize GLAD" << std::endl;
-		return -1;
-	}
-
+	OPENGLPROJECT_CORE_ASSERT(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
 
 	// configure global opengl state
 	// -----------------------------
@@ -87,8 +91,8 @@ int main()
 
 	// build and compile our shader zprogram
 	// ------------------------------------
-	Shader fancyShader("Shaders/lightingShader.vert", "Shaders/lightingShader.frag");
-	Shader flatShader("Shaders/lampShader.vert", "Shaders/lampShader.frag");
+	Shader fancyShader("assets/Shaders/lightingShader.vert", "assets/Shaders/lightingShader.frag");
+	Shader flatShader("assets/Shaders/lampShader.vert", "assets/Shaders/lampShader.frag");
 
 	//lamp VAO stuff
 	unsigned int lightVAO;
@@ -104,7 +108,7 @@ int main()
 		glm::vec3(0.0f,  0.0f, -3.0f)
 	};
 
-	Model nanosuitModel("resources/models/nanosuit/crysis_nano_suit_2/scene.gltf");
+	Model nanosuitModel("assets/models/nanosuit/crysis_nano_suit_2/scene.gltf");
 	
 	// render loop
 	// -----------

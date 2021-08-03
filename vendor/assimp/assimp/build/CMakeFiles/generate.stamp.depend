@@ -1,0 +1,41 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckFunctionExists.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckIncludeFileCXX.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/CheckTypeSize.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindOpenGL.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/FindPkgConfig.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.14/Modules/Platform/WindowsPaths.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/CMakeLists.txt
+D:/Learning-OpenGL/vendor/assimp/assimp/assimp-config-version.cmake.in
+D:/Learning-OpenGL/vendor/assimp/assimp/assimp-config.cmake.in
+D:/Learning-OpenGL/vendor/assimp/assimp/assimp.pc.in
+D:/Learning-OpenGL/vendor/assimp/assimp/build/CMakeFiles/3.14.0-rc2/CMakeCCompiler.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/build/CMakeFiles/3.14.0-rc2/CMakeCXXCompiler.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/build/CMakeFiles/3.14.0-rc2/CMakeRCCompiler.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/build/CMakeFiles/3.14.0-rc2/CMakeSystem.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/cmake-modules/FindDevIL.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/cmake-modules/FindDirectX.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/cmake-modules/FindPkgMacros.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/cmake-modules/PrecompiledHeader.cmake
+D:/Learning-OpenGL/vendor/assimp/assimp/cmake-modules/cmake_uninstall.cmake.in
+D:/Learning-OpenGL/vendor/assimp/assimp/include/assimp/config.h.in
+D:/Learning-OpenGL/vendor/assimp/assimp/revision.h.in

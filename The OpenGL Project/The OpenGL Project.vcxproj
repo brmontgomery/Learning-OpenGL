@@ -81,7 +81,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4201;4100;4189;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;UNICODE;OpenGLProject_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>EngineSrc;..\vendor\spdlog\include;..\vendor\assimp\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendor\spdlog\include;..\vendor\assimp\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -93,8 +93,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp\assimp\bin\Debug-windows-x86_64\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;assimp-vc140-mt.lib;IrrXML.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp\assimp\build\code\Debug;..\vendor\assimp\assimp\build\contrib\irrXML\Debug;..\vendor\assimp\assimp\build\contrib\zlib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -103,7 +103,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4201;4100;4189;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;UNICODE;OpenGLProject_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>EngineSrc;..\vendor\spdlog\include;..\vendor\assimp\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendor\spdlog\include;..\vendor\assimp\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -118,8 +118,8 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp\assimp\bin\Debug-windows-x86_64\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;assimp-vc140-mt.lib;IrrXML.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp\assimp\build\code\Debug;..\vendor\assimp\assimp\build\contrib\irrXML\Debug;..\vendor\assimp\assimp\build\contrib\zlib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -128,7 +128,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4201;4100;4189;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>GLFW_INCLUDE_NONE;_CRT_SECURE_NO_WARNINGS;UNICODE;OpenGLProject_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>EngineSrc;..\vendor\spdlog\include;..\vendor\assimp\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendor\spdlog\include;..\vendor\assimp\assimp\include;..\vendor\GLFW\include;..\vendor\glm;..\vendor\Glad\include;..\vendor\stb-master;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -143,12 +143,53 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp\assimp\bin\Debug-windows-x86_64\assimp;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;assimp-vc140-mt.lib;IrrXML.lib;zlibd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\vendor\glfw\bin\Debug-windows-x86_64\glfw;..\vendor\Glad\bin\Debug-windows-x86_64\Glad;..\vendor\assimp\assimp\build\code\Debug;..\vendor\assimp\assimp\build\contrib\irrXML\Debug;..\vendor\assimp\assimp\build\contrib\zlib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\vendor\KHR\khrplatform.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Compiler\poppack1.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Compiler\pstdint.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Compiler\pushpack1.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\DefaultIOStream.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\DefaultIOSystem.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\DefaultLogger.hpp" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Defines.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Exporter.hpp" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\IOStream.hpp" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\IOSystem.hpp" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Importer.hpp" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\LogStream.hpp" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\Logger.hpp" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\NullLogger.hpp" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\ProgressHandler.hpp" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\SceneCombiner.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\ai_assert.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\anim.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\camera.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\cexport.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\cfileio.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\cimport.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\color4.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\config.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\defs.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\importerdesc.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\light.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\material.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\matrix3x3.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\matrix4x4.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\mesh.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\metadata.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\port\AndroidJNI\AndroidJNIIOSystem.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\postprocess.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\quaternion.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\scene.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\texture.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\types.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\vector2.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\vector3.h" />
+    <ClInclude Include="..\vendor\assimp\assimp\include\assimp\version.h" />
     <ClInclude Include="..\vendor\glm\glm\common.hpp" />
     <ClInclude Include="..\vendor\glm\glm\detail\_features.hpp" />
     <ClInclude Include="..\vendor\glm\glm\detail\_fixes.hpp" />
@@ -562,15 +603,147 @@
     <ClInclude Include="..\vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="..\vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="..\vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\async.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\async_logger-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\async_logger.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\cfg\argv.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\cfg\env.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\cfg\helpers-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\cfg\helpers.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\common-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\common.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\backtracer-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\backtracer.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\circular_q.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\console_globals.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\file_helper-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\file_helper.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\fmt_helper.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\log_msg-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\log_msg.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\log_msg_buffer-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\log_msg_buffer.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\mpmc_blocking_q.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\null_mutex.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\os-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\os.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\periodic_worker-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\periodic_worker.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\registry-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\registry.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\synchronous_factory.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\tcp_client-windows.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\tcp_client.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\thread_pool-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\thread_pool.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\details\windows_include.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bin_to_hex.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\chrono.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\color.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\compile.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\core.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\format-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\format.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\locale.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\os.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\ostream.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\posix.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\printf.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\bundled\ranges.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\chrono.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\fmt.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fmt\ostr.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\formatter.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\fwd.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\logger-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\logger.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\pattern_formatter-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\pattern_formatter.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\android_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\ansicolor_sink-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\ansicolor_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\base_sink-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\base_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\basic_file_sink-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\basic_file_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\daily_file_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\dist_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\dup_filter_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\hourly_file_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\msvc_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\null_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\ostream_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\ringbuffer_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\rotating_file_sink-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\rotating_file_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\sink-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\stdout_color_sinks-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\stdout_color_sinks.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\stdout_sinks-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\stdout_sinks.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\syslog_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\systemd_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\tcp_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\win_eventlog_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\wincolor_sink-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\sinks\wincolor_sink.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\spdlog-inl.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\spdlog.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\stopwatch.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\tweakme.h" />
+    <ClInclude Include="..\vendor\spdlog\include\spdlog\version.h" />
     <ClInclude Include="..\vendor\stb-master\stb-master\stb_image.h" />
-    <ClInclude Include="src\Camera.h" />
-    <ClInclude Include="src\Mesh.h" />
-    <ClInclude Include="src\Models.h" />
-    <ClInclude Include="src\Shaders.h" />
+    <ClInclude Include="src\AssetClasses\Mesh.h" />
+    <ClInclude Include="src\AssetClasses\Models.h" />
+    <ClInclude Include="src\AssetClasses\Shaders.h" />
+    <ClInclude Include="src\Base\Application.h" />
+    <ClInclude Include="src\Base\Camera.h" />
+    <ClInclude Include="src\Base\Window.h" />
+    <ClInclude Include="src\Utility\Assert.h" />
+    <ClInclude Include="src\Utility\Base.h" />
+    <ClInclude Include="src\Utility\Instrumentor.h" />
+    <ClInclude Include="src\Utility\Log.h" />
+    <ClInclude Include="src\Utility\PlatformDetection.h" />
+    <ClInclude Include="src\Utility\TimeStep.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Implementations.cpp" />
+    <ClCompile Include="src\Base\Application.cpp" />
+    <ClCompile Include="src\Utility\Implementations.cpp" />
+    <ClCompile Include="src\Utility\Log.cpp" />
     <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Shaders\lampShader.frag" />
+    <None Include="assets\Shaders\lampShader.vert" />
+    <None Include="assets\Shaders\lightingShader.frag" />
+    <None Include="assets\Shaders\lightingShader.vert" />
+    <None Include="assets\models\nanosuit\arm_dif.png" />
+    <None Include="assets\models\nanosuit\body_dif.png" />
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2.zip" />
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\scene.bin" />
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\scene.gltf" />
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\Body_baseColor.png" />
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\Glass_baseColor.png" />
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\Hand_baseColor.png" />
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\Helmet_baseColor.png" />
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\material_4_baseColor.png" />
+    <None Include="assets\models\nanosuit\crysis_nano_suit_2\textures\material_baseColor.png" />
+    <None Include="assets\models\nanosuit\glass_ddn.png" />
+    <None Include="assets\models\nanosuit\glass_dif.png" />
+    <None Include="assets\models\nanosuit\hand_dif.png" />
+    <None Include="assets\models\nanosuit\hand_showroom_ddn.png" />
+    <None Include="assets\models\nanosuit\hand_showroom_spec.png" />
+    <None Include="assets\models\nanosuit\helmet_dif.png" />
+    <None Include="assets\models\nanosuit\helmet_showroom_ddn.png" />
+    <None Include="assets\models\nanosuit\leg_dif.png" />
+    <None Include="assets\models\nanosuit\leg_showroom_ddn.png" />
+    <None Include="assets\models\nanosuit\scene.fbx" />
+    <None Include="assets\textures\awesomeface.png" />
+    <None Include="assets\textures\container.jpg" />
+    <None Include="assets\textures\containerForLightingMapTut.png" />
+    <None Include="assets\textures\containerForLightingMapTut_specular.png" />
+    <None Include="assets\textures\containerLightingMapEmission.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vendor\GLFW\GLFW.vcxproj">
@@ -578,9 +751,6 @@
     </ProjectReference>
     <ProjectReference Include="..\vendor\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\vendor\assimp\assimp\assimp.vcxproj">
-      <Project>{724885F2-5EEA-AFC8-47A5-C31C33E63619}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
