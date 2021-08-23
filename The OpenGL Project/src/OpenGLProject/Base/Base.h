@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "Utility/PlatformDetection.h"
+#include "OpenGLProject/Utility/PlatformDetection.h"
 
 #ifdef OPENGLPROJECT_DEBUG
 #if defined(OPENGLPROJECT_PLATFORM_WINDOWS)
@@ -41,5 +41,5 @@ constexpr Ref<T> CreateRef(Args&& ... args)
 	return std::make_shared<T>(std::forward<Args>(args)...);
 }
 
-#include "Utility/Log.h"
-#include "Utility/Assert.h"
+#include "OpenGLProject/Utility/Log.h"
+#include "OpenGLProject/Utility/Assert.h"

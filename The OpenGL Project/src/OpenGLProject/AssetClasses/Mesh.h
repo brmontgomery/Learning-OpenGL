@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-#include "AssetClasses/Shaders.h"
+#include "OpenGLProject/AssetClasses/Shaders.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>

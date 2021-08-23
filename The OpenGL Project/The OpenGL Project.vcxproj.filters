@@ -25,14 +25,32 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\AssetClasses">
-      <UniqueIdentifier>{8A2367BE-761C-8610-9F4E-6B958BA6651C}</UniqueIdentifier>
+    <Filter Include="src\OpenGLProject">
+      <UniqueIdentifier>{988B5DB9-04A2-5B4F-4D19-E770B96E2CD7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Base">
-      <UniqueIdentifier>{D70B1CCF-C3D8-76DA-ECF1-6482D81DAC68}</UniqueIdentifier>
+    <Filter Include="src\OpenGLProject\AssetClasses">
+      <UniqueIdentifier>{D519003B-C13F-CAA1-AA85-4F6D964AEF6D}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Utility">
-      <UniqueIdentifier>{70464FB2-DCFB-C7A7-65F0-C17ED1A4BEAB}</UniqueIdentifier>
+    <Filter Include="src\OpenGLProject\Base">
+      <UniqueIdentifier>{22E794BE-0EE1-BD10-F74D-5421E3E6237D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OpenGLProject\Graphics">
+      <UniqueIdentifier>{D8DE03D0-C4EE-AFA0-2DA8-14BF19D79E39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OpenGLProject\Graphics\Camera">
+      <UniqueIdentifier>{50501D82-BCBE-7201-05A8-2D017155689D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\OpenGLProject\Utility">
+      <UniqueIdentifier>{DB610787-4724-3B11-90D4-C99DFCD513EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
@@ -1749,52 +1767,142 @@
     <ClInclude Include="..\vendor\stb-master\stb-master\stb_image.h">
       <Filter>vendor\stb-master\stb-master</Filter>
     </ClInclude>
-    <ClInclude Include="src\AssetClasses\Mesh.h">
-      <Filter>src\AssetClasses</Filter>
+    <ClInclude Include="src\OpenGLProject\AssetClasses\Mesh.h">
+      <Filter>src\OpenGLProject\AssetClasses</Filter>
     </ClInclude>
-    <ClInclude Include="src\AssetClasses\Models.h">
-      <Filter>src\AssetClasses</Filter>
+    <ClInclude Include="src\OpenGLProject\AssetClasses\Models.h">
+      <Filter>src\OpenGLProject\AssetClasses</Filter>
     </ClInclude>
-    <ClInclude Include="src\AssetClasses\Shaders.h">
-      <Filter>src\AssetClasses</Filter>
+    <ClInclude Include="src\OpenGLProject\AssetClasses\OldShaders.h">
+      <Filter>src\OpenGLProject\AssetClasses</Filter>
     </ClInclude>
-    <ClInclude Include="src\Base\Application.h">
-      <Filter>src\Base</Filter>
+    <ClInclude Include="src\OpenGLProject\AssetClasses\Shaders.h">
+      <Filter>src\OpenGLProject\AssetClasses</Filter>
     </ClInclude>
-    <ClInclude Include="src\Base\Camera.h">
-      <Filter>src\Base</Filter>
+    <ClInclude Include="src\OpenGLProject\Base\Application.h">
+      <Filter>src\OpenGLProject\Base</Filter>
     </ClInclude>
-    <ClInclude Include="src\Base\Window.h">
-      <Filter>src\Base</Filter>
+    <ClInclude Include="src\OpenGLProject\Base\Base.h">
+      <Filter>src\OpenGLProject\Base</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utility\Assert.h">
-      <Filter>src\Utility</Filter>
+    <ClInclude Include="src\OpenGLProject\Base\Window.h">
+      <Filter>src\OpenGLProject\Base</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utility\Base.h">
-      <Filter>src\Utility</Filter>
+    <ClInclude Include="src\OpenGLProject\Graphics\Buffer.h">
+      <Filter>src\OpenGLProject\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utility\Instrumentor.h">
-      <Filter>src\Utility</Filter>
+    <ClInclude Include="src\OpenGLProject\Graphics\Camera\Camera.h">
+      <Filter>src\OpenGLProject\Graphics\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utility\Log.h">
-      <Filter>src\Utility</Filter>
+    <ClInclude Include="src\OpenGLProject\Graphics\Camera\OrthographicCamera.h">
+      <Filter>src\OpenGLProject\Graphics\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utility\PlatformDetection.h">
-      <Filter>src\Utility</Filter>
+    <ClInclude Include="src\OpenGLProject\Graphics\GraphicsContext.h">
+      <Filter>src\OpenGLProject\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="src\Utility\TimeStep.h">
-      <Filter>src\Utility</Filter>
+    <ClInclude Include="src\OpenGLProject\Graphics\Renderer.h">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLProject\Graphics\RendererAPI.h">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLProject\Graphics\RendererCommand.h">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLProject\Graphics\VertexArray.h">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLProject\Utility\Assert.h">
+      <Filter>src\OpenGLProject\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLProject\Utility\Instrumentor.h">
+      <Filter>src\OpenGLProject\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLProject\Utility\Log.h">
+      <Filter>src\OpenGLProject\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLProject\Utility\PlatformDetection.h">
+      <Filter>src\OpenGLProject\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLProject\Utility\TimeStep.h">
+      <Filter>src\OpenGLProject\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\OpenGLProject\Utility\Timer.h">
+      <Filter>src\OpenGLProject\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShaders.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Base\Application.cpp">
-      <Filter>src\Base</Filter>
+    <ClCompile Include="src\OpenGLProject\AssetClasses\Shaders.cpp">
+      <Filter>src\OpenGLProject\AssetClasses</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utility\Implementations.cpp">
-      <Filter>src\Utility</Filter>
+    <ClCompile Include="src\OpenGLProject\Base\Application.cpp">
+      <Filter>src\OpenGLProject\Base</Filter>
     </ClCompile>
-    <ClCompile Include="src\Utility\Log.cpp">
-      <Filter>src\Utility</Filter>
+    <ClCompile Include="src\OpenGLProject\Base\Window.cpp">
+      <Filter>src\OpenGLProject\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLProject\Graphics\Buffer.cpp">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLProject\Graphics\Camera\OrthographicCamera.cpp">
+      <Filter>src\OpenGLProject\Graphics\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLProject\Graphics\GraphicsContext.cpp">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLProject\Graphics\Renderer.cpp">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLProject\Graphics\RendererAPI.cpp">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLProject\Graphics\RendererCommand.cpp">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLProject\Graphics\VertexArray.cpp">
+      <Filter>src\OpenGLProject\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLProject\Utility\Implementations.cpp">
+      <Filter>src\OpenGLProject\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\OpenGLProject\Utility\Log.cpp">
+      <Filter>src\OpenGLProject\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShaders.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>

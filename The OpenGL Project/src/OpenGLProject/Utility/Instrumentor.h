@@ -6,8 +6,11 @@
 #include <iomanip>
 #include <string>
 #include <thread>
+#include <mutex>
 
-#include "Utility/Log.h"
+#include "OpenGLProject/Base/Base.h"
+#include "OpenGLProject/Utility/Log.h"
+
 
 
 using FloatingPointMicroseconds = std::chrono::duration<double, std::micro>;

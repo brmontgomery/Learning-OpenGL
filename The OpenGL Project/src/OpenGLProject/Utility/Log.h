@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Utility/Base.h"
+#include "OpenGLProject/Base/Base.h"
 
 // This ignores all warnings raised inside External headers
 #pragma warning(push, 0)
@@ -10,20 +10,19 @@
 
 
 	//logging class
-	class Log
-	{
-	public:
-		static void Init();
-		static void Shutdown();
+class Log {
+public:
+	static void Init();
+	static void Shutdown();
 
-		//getters
-		inline static std::shared_ptr<spdlog::logger>& getCoreLogger() { return s_CoreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return s_ClientLogger; }
+	//getters
+	inline static std::shared_ptr<spdlog::logger>& getCoreLogger() { return s_CoreLogger; }
+	inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return s_ClientLogger; }
 
-	private:
-		static std::shared_ptr<spdlog::logger> s_CoreLogger;
-		static std::shared_ptr<spdlog::logger> s_ClientLogger;
-	};
+private:
+	static std::shared_ptr<spdlog::logger> s_CoreLogger;
+	static std::shared_ptr<spdlog::logger> s_ClientLogger;
+};
 
 // Core log macros
 #define OPENGLPROJECT_CORE_TRACE(...)		::Log::getCoreLogger()->trace(__VA_ARGS__)

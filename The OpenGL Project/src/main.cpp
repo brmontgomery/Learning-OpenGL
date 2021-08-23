@@ -11,11 +11,14 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "AssetClasses/Shaders.h"
-#include "Base/Camera.h"
-#include "AssetClasses/Models.h"
+#include "OpenGLProject/AssetClasses/OldShaders.h"
+#include "OpenGLProject/Graphics/Camera/Camera.h"
+#include "OpenGLProject/AssetClasses/Models.h"
 
-#include "Utility/Log.h"
+#include "OpenGLProject/Utility/Log.h"
+#include "OpenGLProject/Utility/Instrumentor.h"
+
+#include "OpenGLProject/Base/Application.h"
 
 #include <iostream>
 
@@ -42,6 +45,22 @@ float lastFrame = 0.0f;
 // lighting
 bool fancy = 1;
 
+/*int main() {
+	Log::Init();
+
+	OPENGLPROJECT_PROFILE_BEGIN_SESSION("Startup", "OpenGLProject-Startup.json");
+	auto app = Application::Get("OpenGL Project");
+	OPENGLPROJECT_PROFILE_END_SESSION();
+
+	OPENGLPROJECT_PROFILE_BEGIN_SESSION("Runtime", "OpenGLProject-Runtime.json");
+	app->Run();
+	OPENGLPROJECT_PROFILE_END_SESSION();
+
+	OPENGLPROJECT_PROFILE_BEGIN_SESSION("Shutdown", "OpenGLProject-Shutdown.json");
+	delete app;
+	OPENGLPROJECT_PROFILE_END_SESSION();
+}
+*/
 int main()
 {
 	Log::Init();

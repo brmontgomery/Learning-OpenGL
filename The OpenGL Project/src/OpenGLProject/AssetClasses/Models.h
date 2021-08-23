@@ -2,9 +2,10 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 
-#include "AssetClasses/Shaders.h"
-#include "AssetClasses/Mesh.h"
+#include "OpenGLProject/AssetClasses/OldShaders.h"
+#include "OpenGLProject/AssetClasses/Mesh.h"
 
 #include <stb-master/stb_image.h>
 #include <assimp/config.h>
@@ -12,7 +13,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-#include "Utility/Log.h"
+#include "OpenGLProject/Utility/Log.h"
 
 unsigned int TextureFromFile(const char *path, const std::string &directory);
 

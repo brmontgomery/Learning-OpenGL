@@ -1,32 +1,29 @@
-#include "Base/Application.h"
+#include "OpenGLProject/Base/Application.h"
 
-#include "Utility/Log.h"
+#include "OpenGLProject/Utility/Log.h"
 
 //#include "Eros/Renderer/Renderer.h"
 
 //#include "Eros/Core/Input/Input.h"
 
-#include "Utility/Log.h"
-#include "Utility/Instrumentor.h"
+#include "OpenGLProject/Utility/Log.h"
+#include "OpenGLProject/Utility/Instrumentor.h"
 
 #include <GLFW/glfw3.h>
 
-Application* Application::s_Instance = nullptr;
+Application* Application::s_AppInstance = nullptr;
 
-Application::Application(const std::string& name, ApplicationCommandLineArgs args)
-	: m_CommandLineArgs(args)
+Application* Application::Get(const std::string& name)
 {
-	OPENGLPROJECT_PROFILE_FUNCTION();
-
-	OPENGLPROJECT_CORE_ASSERT(!s_Instance, "Application already exists!");
-	s_Instance = this;
-	m_Window = Window::Create(WindowProps(name));
-	//m_Window->SetEventCallback(OPENGLPROJECT_BIND_EVENT_FN(Application::OnEvent));
-
-	//Renderer::Init();
-
-	//m_ImGuiLayer = new ImGuiLayer();
-	//PushOverlay(m_ImGuiLayer);
+	/**
+	 * This is a safer way to create an instance. instance = new Singleton is
+	 * dangeruous in case two instance threads wants to access at the same time
+	 */
+	if (s_AppInstance == nullptr) {
+		s_AppInstance = new Application(name);
+		s_AppInstance->m_Window = Window::Create(WindowProps(name));
+	}
+	return s_AppInstance;
 }
 
 Application::~Application()
@@ -34,6 +31,7 @@ Application::~Application()
 	OPENGLPROJECT_PROFILE_FUNCTION();
 
 	//Renderer::Shutdown();
+	delete s_AppInstance;
 }
 
 /*void Application::PushLayer(Layer* layer)

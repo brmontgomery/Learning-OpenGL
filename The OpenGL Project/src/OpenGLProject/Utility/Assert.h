@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Utility/Base.h"
-#include "Utility/Log.h"
+#include "OpenGLProject/Base/Base.h"
+#include "OpenGLProject/Utility/Log.h"
 #include <filesystem>
 
 #ifdef OPENGLPROJECT_ENABLE_ASSERTS

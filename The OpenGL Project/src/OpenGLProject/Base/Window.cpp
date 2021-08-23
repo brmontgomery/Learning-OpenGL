@@ -1,5 +1,6 @@
-#include "Base/Window.h"
-#include "Log.h"
+#include "OpenGLProject/Base/Window.h"
+#include "OpenGLProject/Utility/Log.h"
+#include "OpenGLProject/Base/Base.h"
 
 #ifdef OPENGLPROJECT_PLATFORM_WINDOWS
 #include "Platform/Windows/WindowsWindow.h"

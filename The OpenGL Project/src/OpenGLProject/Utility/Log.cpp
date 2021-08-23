@@ -1,5 +1,5 @@
-#pragma once
 #include "Log.h"
+#include "OpenGLProject/Base/Base.h"
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/sinks/basic_file_sink.h>
 
@@ -25,3 +25,5 @@ void Log::Init()
 	s_ClientLogger->set_level(spdlog::level::trace);
 	s_ClientLogger->flush_on(spdlog::level::trace);
 }
+
+void Log::Shutdown() {}
