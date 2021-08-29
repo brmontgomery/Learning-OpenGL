@@ -1,6 +1,6 @@
-workspace "The OpenGL Project"
+workspace "The_OpenGL_Project"
 	architecture "x86_64"
-	startproject "The OpenGL Project"
+	startproject "The_OpenGL_Project"
 
 	configurations
 	{
@@ -32,15 +32,38 @@ workspace "The OpenGL Project"
 
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+VULKAN_SDK = os.getenv("VULKAN_SDK")
+
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["assimp"] = "vendor/assimp/assimp/include"
-IncludeDir["GLFW"] = "vendor/GLFW/include"
-IncludeDir["Glad"] = "vendor/Glad/include"
-IncludeDir["glm"] = "vendor/glm"
-IncludeDir["stb"] = "vendor/stb-master"
+IncludeDir["assimp"] = "%{wks.location}/vendor/assimp/assimp/include"
+IncludeDir["GLFW"] = "%{wks.location}/vendor/GLFW/include"
+IncludeDir["Glad"] = "%{wks.location}/vendor/Glad/include"
+IncludeDir["glm"] = "%{wks.location}/vendor/glm"
+IncludeDir["stb"] = "%{wks.location}/vendor/stb-master"
+IncludeDir["shaderc"] = "%{wks.location}/vendor/shaderc"
+IncludeDir["SPIRV_Cross"] = "%{wks.location}/vendor/spirv_cross"
+IncludeDir["VulkanSDK"] = "%{VULKAN_SDK}/Include"
+
+LibraryDir = {}
+
+LibraryDir["VulkanSDK"] = "%{VULKAN_SDK}/Lib"
+LibraryDir["VulkanSDK_Debug"] = "%{wks.location}/vendor/VulkanSDK/Lib"
+LibraryDir["VulkanSDK_DebugDLL"] = "%{wks.location}/vendor/VulkanSDK/Bin"
+LibraryDir["VulkanSDK_DebugDLL_Post_Build"] = "%{wks.location}vendor/VulkanSDK/Bin"
 
 Library = {}
+Library["Vulkan"] = "%{LibraryDir.VulkanSDK}/vulkan-1.lib"
+Library["VulkanUtils"] = "%{LibraryDir.VulkanSDK}/VkLayer_utils.lib"
+
+Library["ShaderC_Debug"] = "%{LibraryDir.VulkanSDK_Debug}/shaderc_sharedd.lib"
+Library["SPIRV_Cross_Debug"] = "%{LibraryDir.VulkanSDK_Debug}/spirv-cross-cored.lib"
+Library["SPIRV_Cross_GLSL_Debug"] = "%{LibraryDir.VulkanSDK_Debug}/spirv-cross-glsld.lib"
+Library["SPIRV_Tools_Debug"] = "%{LibraryDir.VulkanSDK_Debug}/SPIRV-Toolsd.lib"
+
+Library["ShaderC_Release"] = "%{LibraryDir.VulkanSDK}/shaderc_shared.lib"
+Library["SPIRV_Cross_Release"] = "%{LibraryDir.VulkanSDK}/spirv-cross-core.lib"
+Library["SPIRV_Cross_GLSL_Release"] = "%{LibraryDir.VulkanSDK}/spirv-cross-glsl.lib"
 
 
 group "Dependencies"
@@ -49,8 +72,8 @@ group "Dependencies"
 
 group ""
 
-project "The OpenGL Project"
-	location "The OpenGL Project"
+project "The_OpenGL_Project"
+	location "The_OpenGL_Project"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
@@ -72,6 +95,8 @@ project "The OpenGL Project"
 		"vendor/spdlog/include/**.cpp",
 		"vendor/stb-master/stb-master/stb_image.h",
 		"%{prj.name}/assets/**",
+		"vendor/shaderc/**",
+		"vendor/spirv_cross/**",
 
 		--"assets/shaders/**.spv",
 		--"assets/models/**.obj",
@@ -92,15 +117,18 @@ project "The OpenGL Project"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.stb}"
+		"%{IncludeDir.stb}",
+		"%{IncludeDir.shaderc}",
+		"%{IncludeDir.SPIRV_Cross}",
+		"%{IncludeDir.VulkanSDK}"
 	}
 
 	libdirs { 
 		"vendor/glfw/bin/Debug-windows-x86_64/glfw",
 		"vendor/Glad/bin/Debug-windows-x86_64/Glad",
-		"vendor/assimp/assimp/build/code/Debug",
-		"vendor/assimp/assimp/build/contrib/irrXML/Debug",
-		"vendor/assimp/assimp/build/contrib/zlib/Debug"
+		"%{LibraryDir.VulkanSDK}",
+		"%{LibraryDir.VulkanSDK_Debug}",
+		"%{LibraryDir.VulkanSDK_DebugDLL_Post_Build}"
 	}
 
 	links 
@@ -108,7 +136,6 @@ project "The OpenGL Project"
 		"GLFW",
 		"Glad",
 		"opengl32.lib",
-		"assimp-vc140-mt.lib",
 		"IrrXML.lib",
 		"zlibd.lib"
 	}
@@ -143,18 +170,60 @@ project "The OpenGL Project"
 		
 	filter "configurations:Debug"
 
-		defines "OpenGLProject_DEBUG"
+		defines "OPENGLPROJECT_DEBUG"
 		runtime "Debug"
 		symbols "on"
 
+		libdirs {
+			"vendor/assimp/assimp/build/code/Debug",
+			"vendor/assimp/assimp/build/contrib/zlib/Debug"
+		}
+
+		links
+		{
+			"assimpd.lib",
+			"%{Library.ShaderC_Debug}",
+			"%{Library.SPIRV_Cross_Debug}",
+			"%{Library.SPIRV_Cross_GLSL_Debug}"
+		}
+
+		postbuildcommands {
+			"{COPY} %{LibraryDir.VulkanSDK_DebugDLL_Post_Build}/shaderc_sharedd.dll %{cfg.targetdir}",
+			"{COPY} %{wks.location}vendor/assimp/assimp/build/code/Debug/assimp.dll %{cfg.targetdir}"
+		}
+
 	filter "configurations:Release"
 
-		defines "OpenGLProject_RELEASE"
+		defines "OPENGLPROJECT_RELEASE"
 		runtime "Release"
 		optimize "on"
+
+		libdirs {
+			"vendor/assimp/assimp/build/code/Release",
+			"vendor/assimp/assimp/build/contrib/irrXML/Release",
+			"vendor/assimp/assimp/build/contrib/zlib/Release"
+		}
+
+		links
+		{
+			"%{Library.ShaderC_Release}",
+			"%{Library.SPIRV_Cross_Release}",
+			"%{Library.SPIRV_Cross_GLSL_Release}"
+		}
+
+		postbuildcommands {
+			"{COPY} %{wks.location}vendor/assimp/assimp/build/code/Release/assimp.dll %{cfg.targetdir}"
+		}
 
 	filter "configurations:Dist"
 
-		defines "OpenGLProject_DIST"
+		defines "OPENGLPROJECT_DIST"
 		runtime "Release"
 		optimize "on"
+
+		links
+		{
+			"%{Library.ShaderC_Release}",
+			"%{Library.SPIRV_Cross_Release}",
+			"%{Library.SPIRV_Cross_GLSL_Release}"
+		}
