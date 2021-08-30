@@ -135,9 +135,9 @@ project "The_OpenGL_Project"
 	{ 
 		"GLFW",
 		"Glad",
+		"assimp-vc140-mt.lib",
 		"opengl32.lib",
 		"IrrXML.lib",
-		"zlibd.lib"
 	}
 
 	flags { "NoPCH" }
@@ -176,12 +176,13 @@ project "The_OpenGL_Project"
 
 		libdirs {
 			"vendor/assimp/assimp/build/code/Debug",
+			"vendor/assimp/assimp/build/contrib/irrXML/Debug",
 			"vendor/assimp/assimp/build/contrib/zlib/Debug"
 		}
 
 		links
 		{
-			"assimpd.lib",
+			"zlibd.lib",
 			"%{Library.ShaderC_Debug}",
 			"%{Library.SPIRV_Cross_Debug}",
 			"%{Library.SPIRV_Cross_GLSL_Debug}"
@@ -189,7 +190,7 @@ project "The_OpenGL_Project"
 
 		postbuildcommands {
 			"{COPY} %{LibraryDir.VulkanSDK_DebugDLL_Post_Build}/shaderc_sharedd.dll %{cfg.targetdir}",
-			"{COPY} %{wks.location}vendor/assimp/assimp/build/code/Debug/assimp.dll %{cfg.targetdir}"
+			"{COPY} %{wks.location}vendor/assimp/assimp/build/code/Debug/assimp-vc140-mt.dll %{cfg.targetdir}"
 		}
 
 	filter "configurations:Release"
@@ -206,13 +207,14 @@ project "The_OpenGL_Project"
 
 		links
 		{
+			"zlib.lib",
 			"%{Library.ShaderC_Release}",
 			"%{Library.SPIRV_Cross_Release}",
 			"%{Library.SPIRV_Cross_GLSL_Release}"
 		}
 
 		postbuildcommands {
-			"{COPY} %{wks.location}vendor/assimp/assimp/build/code/Release/assimp.dll %{cfg.targetdir}"
+			"{COPY} %{wks.location}vendor/assimp/assimp/build/code/Release/assimp-vc140-mt.dll %{cfg.targetdir}"
 		}
 
 	filter "configurations:Dist"
