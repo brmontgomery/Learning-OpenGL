@@ -11,9 +11,9 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "OpenGLProject/AssetClasses/OldShaders.h"
+//#include "OpenGLProject/AssetClasses/Shaders.h"
 #include "OpenGLProject/Graphics/Camera/Camera.h"
-#include "OpenGLProject/AssetClasses/Models.h"
+//#include "OpenGLProject/AssetClasses/Models.h"
 
 #include "OpenGLProject/Utility/Log.h"
 #include "OpenGLProject/Utility/Instrumentor.h"

@@ -3,11 +3,15 @@
 #include <string>
 #include <vector>
 
-#include "OpenGLProject/AssetClasses/OldShaders.h"
+#include "OpenGLProject/AssetClasses/Shaders.h"
+#include "Platform/OpenGL/OpenGLShaders.h"
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include <glad/glad.h>
+#include <glfw/glfw3.h>
 
 struct Vertex {
 	glm::vec3 position;
@@ -30,7 +34,7 @@ class Mesh {
 
 		//functions
 		Mesh(const std::vector<Vertex> vertices, const std::vector<unsigned int> indeces, const std::vector<Texture> textures);
-		const void Draw(Shader shader);
+		const void Draw(Ref<Shader> shader);
 
 	private:
 		//render data
@@ -44,7 +48,7 @@ Mesh::Mesh( const std::vector<Vertex> vertices, const std::vector<unsigned int> 
 {
 	setupMesh();
 }
-const void Mesh::Draw(Shader shader) {
+const void Mesh::Draw(Ref<Shader> shader) {
 	unsigned int diffuseNr = 1;
 	unsigned int specularNr = 1;
 
@@ -60,7 +64,7 @@ const void Mesh::Draw(Shader shader) {
 		else if (name == "texture_specular")
 			number = std::to_string(specularNr++);
 
-		shader.setFloat(("material." + name + number).c_str(), i); 
+		shader->SetFloat(("material." + name + number).c_str(), i); 
 		glBindTexture(GL_TEXTURE_2D, textures[i].id);
 	}
 	glActiveTexture(GL_TEXTURE0);

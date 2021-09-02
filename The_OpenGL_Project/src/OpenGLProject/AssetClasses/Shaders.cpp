@@ -3,6 +3,30 @@
 #include "OpenGLProject/Graphics/Renderer.h"
 #include "Platform/OpenGL/OpenGLShaders.h"
 
+#include "OpenGLProject/Utility/Instrumentor.h"
+
+ShaderLibrary* ShaderLibrary::s_ShaderLibraryInstance = nullptr;
+
+ShaderLibrary* ShaderLibrary::Get()
+{
+	/**
+	 * This is a safer way to create an instance. instance = new Singleton is
+	 * dangeruous in case two instance threads wants to access at the same time
+	 */
+	if (s_ShaderLibraryInstance == nullptr) {
+		s_ShaderLibraryInstance = new ShaderLibrary();
+	}
+
+	return s_ShaderLibraryInstance;
+}
+
+ShaderLibrary::~ShaderLibrary()
+{
+	OPENGLPROJECT_PROFILE_FUNCTION();
+	
+	delete s_ShaderLibraryInstance;
+}
+
 Ref<Shader> Shader::Create(const std::string& filepath)
 {
 	switch (Renderer::GetAPI())
@@ -49,6 +73,13 @@ Ref<Shader> ShaderLibrary::Load(const std::string& filepath)
 Ref<Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath)
 {
 	auto shader = Shader::Create(filepath);
+	Add(name, shader);
+	return shader;
+}
+
+Ref<Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepathvert, const std::string& filepathfrag)
+{
+	auto shader = Shader::Create(name, filepathvert, filepathfrag);
 	Add(name, shader);
 	return shader;
 }

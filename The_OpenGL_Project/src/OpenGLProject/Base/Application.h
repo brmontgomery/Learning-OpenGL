@@ -1,17 +1,19 @@
 #pragma once
 
 #include "OpenGLProject/Base/Base.h"
+#include "OpenGLProject/Utility/Log.h"
+#include "OpenGLProject/Utility/Timestep.h"
 
 #include "OpenGLProject/Base/Window.h"
 //#include "Eros/Core/Layers/LayerStack.h"
 //#include "Eros/Events/Event.h"
 //#include "Eros/Events/ApplicationEvent.h"
 
-#include "OpenGLProject/Utility/Timestep.h"
-
 //#include "Eros/ImGui/ImGuiLayer.h"
 
-#include "OpenGLProject/Utility/Log.h"
+#include "OpenGLProject/AssetClasses/Shaders.h"
+
+
 
 class Application
 {
@@ -49,6 +51,8 @@ private:
 	bool m_Minimized = false;
 	//LayerStack m_LayerStack;
 	float m_LastFrameTime = 0.0f;
+
+
 protected:
 	Application(const std::string appName) : appName(appName)
 	{

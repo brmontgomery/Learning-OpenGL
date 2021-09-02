@@ -32,15 +32,29 @@ public:
 class ShaderLibrary
 {
 public:
+	ShaderLibrary(ShaderLibrary& other) = delete;
+	~ShaderLibrary();
+	void operator=(const ShaderLibrary&) = delete;
+
+	static ShaderLibrary* Get();
+
 	void Add(const std::string& name, const Ref<Shader>& shader);
 	void Add(const Ref<Shader>& shader);
 	Ref<Shader> Load(const std::string& filepath);
 	Ref<Shader> Load(const std::string& name, const std::string& filepath);
+	Ref<Shader> Load(const std::string& name, const std::string& filepathvert, const std::string& filepathfrag);
 
 	Ref<Shader> Get(const std::string& name);
 
 	bool Exists(const std::string& name) const;
 private:
 	std::unordered_map<std::string, Ref<Shader>> m_Shaders;
+
+protected:
+	ShaderLibrary()
+	{
+	}
+
+	static ShaderLibrary* s_ShaderLibraryInstance;
 };
 

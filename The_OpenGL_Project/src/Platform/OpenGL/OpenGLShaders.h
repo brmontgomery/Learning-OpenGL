@@ -10,6 +10,7 @@ class OpenGLShader : public Shader
 {
 public:
 	OpenGLShader(const std::string& filepath);
+	OpenGLShader(const std::string& filepathvert, const std::string& filepathfrag);
 	OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc);
 	virtual ~OpenGLShader();
 
@@ -47,6 +48,7 @@ private:
 private:
 	uint32_t m_RendererID;
 	std::string m_FilePath;
+	std::string m_FilePathSecondary;
 	std::string m_Name;
 
 	std::unordered_map<GLenum, std::vector<uint32_t>> m_VulkanSPIRV;

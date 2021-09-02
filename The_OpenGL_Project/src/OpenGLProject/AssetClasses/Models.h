@@ -4,7 +4,7 @@
 #include <vector>
 #include <iostream>
 
-#include "OpenGLProject/AssetClasses/OldShaders.h"
+#include "OpenGLProject/AssetClasses/Shaders.h"
 #include "OpenGLProject/AssetClasses/Mesh.h"
 
 #include <stb-master/stb_image.h>
@@ -15,6 +15,9 @@
 
 #include "OpenGLProject/Utility/Log.h"
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 unsigned int TextureFromFile(const char *path, const std::string &directory);
 
 class Model {
@@ -23,7 +26,7 @@ class Model {
 		Model (std::string path) {
 			loadModel(path);
 		}
-		void Draw(Shader shader);
+		void Draw(Ref<Shader> shader);
 
 	private:
 		//model data
@@ -40,7 +43,7 @@ class Model {
 };
 
 
-void Model::Draw(Shader shader) {
+void Model::Draw(Ref<Shader> shader) {
 	for (unsigned int i = 0; i < meshes.size(); i++)
 		meshes[i].Draw(shader);
 }

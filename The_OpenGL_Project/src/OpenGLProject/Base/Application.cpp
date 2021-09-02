@@ -1,8 +1,9 @@
 #include "OpenGLProject/Base/Application.h"
 
 #include "OpenGLProject/Utility/Log.h"
+#include "OpenGLProject/AssetClasses/Models.h"
 
-//#include "Eros/Renderer/Renderer.h"
+#include "OpenGLProject/Graphics/Renderer.h"
 
 //#include "Eros/Core/Input/Input.h"
 
@@ -23,6 +24,28 @@ Application* Application::Get(const std::string& name)
 		s_AppInstance = new Application(name);
 		s_AppInstance->m_Window = Window::Create(WindowProps(name));
 	}
+	
+	auto shaderLib = ShaderLibrary::Get();
+
+	//initialize everything else
+	shaderLib->Load("FancyShader", "assets/Shaders/lightingShader.vert", "assets/Shaders/lightingShader.frag");
+	shaderLib->Load("FlatShader", "assets/Shaders/lampShader.vert", "assets/Shaders/lampShader.frag");
+
+	//lamp VAO stuff
+	unsigned int lightVAO;
+	glGenVertexArrays(1, &lightVAO);
+	glBindVertexArray(lightVAO);
+
+	//set the coords for lights to light the object
+	glm::vec3 pointLightPositions[] = {
+		glm::vec3(0.7f,  0.2f,  2.0f),
+		glm::vec3(2.3f, -3.3f, -4.0f),
+		glm::vec3(-4.0f,  2.0f, -12.0f),
+		glm::vec3(0.0f,  0.0f, -3.0f)
+	};
+
+	Model nanosuitModel("assets/models/nanosuit/crysis_nano_suit_2/scene.gltf");
+
 	return s_AppInstance;
 }
 
