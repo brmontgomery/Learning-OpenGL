@@ -62,6 +62,12 @@ void WindowsWindow::Init(const WindowProps& props)
 			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 		window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
+		
+		if (window == NULL) {
+			glfwTerminate();
+			OPENGLPROJECT_CORE_ERROR("Failed to create GLFW window!");
+			return;
+		}
 		++s_GLFWWindowCount;
 	}
 
