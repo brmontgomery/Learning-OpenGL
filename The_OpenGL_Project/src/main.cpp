@@ -3,17 +3,10 @@
 //Author: Brian Montgomery
 //---------------------------------------------------------------------------------
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <stb-master/stb_image.h>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-
-#include "OpenGLProject/AssetClasses/OldShaders.h"
-#include "OpenGLProject/Graphics/Camera/Camera.h"
-#include "OpenGLProject/AssetClasses/Models.h"
+//#include "OpenGLProject/AssetClasses/OldShaders.h"
+//#include "OpenGLProject/Graphics/Camera/Camera.h"
+//#include "OpenGLProject/AssetClasses/Models.h"
 
 #include "OpenGLProject/Utility/Log.h"
 #include "OpenGLProject/Utility/Instrumentor.h"
@@ -22,18 +15,18 @@
 
 #include <iostream>
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void processInput(GLFWwindow *window, bool &fancy);
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+//void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+//void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+//void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+//void processInput(GLFWwindow *window, bool &fancy);
+//void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 // settings
 const unsigned int SCR_WIDTH = 1920;
 const unsigned int SCR_HEIGHT = 1080;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+//Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -49,7 +42,7 @@ int main() {
 	Log::Init();
 
 	OPENGLPROJECT_PROFILE_BEGIN_SESSION("Startup", "OpenGLProject-Startup.json");
-	auto app = Application::Get("OpenGL Project");
+	auto app = CreateScope<Application>("OpenGL Project");
 	OPENGLPROJECT_PROFILE_END_SESSION();
 
 	OPENGLPROJECT_PROFILE_BEGIN_SESSION("Runtime", "OpenGLProject-Runtime.json");
@@ -57,7 +50,7 @@ int main() {
 	OPENGLPROJECT_PROFILE_END_SESSION();
 
 	OPENGLPROJECT_PROFILE_BEGIN_SESSION("Shutdown", "OpenGLProject-Shutdown.json");
-	delete app;
+	app->Close();
 	OPENGLPROJECT_PROFILE_END_SESSION();
 
 	Log::Shutdown();
@@ -65,30 +58,7 @@ int main() {
 
 /*int main()
 {
-	Log::Init();
-
-	// glfw: initialize and configure
-	// ------------------------------
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-#ifdef __APPLE__
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
-#endif
-
-
-	// glfw window creation
-	// --------------------
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "The Grand Experiment", NULL, NULL);
-	int curWidth = SCR_WIDTH;
-	int curHeight = SCR_HEIGHT;
-	if (window == NULL) {
-		glfwTerminate();
-		OPENGLPROJECT_CORE_ERROR("Failed to create GLFW window!");
-		return -1;
-	}
+	
 
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -101,45 +71,13 @@ int main() {
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 
-	// glad: load all OpenGL function pointers
-	// ---------------------------------------
-	OPENGLPROJECT_CORE_ASSERT(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
-
-	// configure global opengl state
-	// -----------------------------
-	glEnable(GL_DEPTH_TEST);
-
-
-	// build and compile our shader zprogram
-	// ------------------------------------
-	Shader fancyShader("assets/Shaders/lightingShader.vert", "assets/Shaders/lightingShader.frag");
-	Shader flatShader("assets/Shaders/lampShader.vert", "assets/Shaders/lampShader.frag");
-
-	//lamp VAO stuff
-	unsigned int lightVAO;
-	glGenVertexArrays(1, &lightVAO);
-	glBindVertexArray(lightVAO);
-
-
-	//set the coords for lights to light the object
-	glm::vec3 pointLightPositions[] = {
-		glm::vec3(0.7f,  0.2f,  2.0f),
-		glm::vec3(2.3f, -3.3f, -4.0f),
-		glm::vec3(-4.0f,  2.0f, -12.0f),
-		glm::vec3(0.0f,  0.0f, -3.0f)
-	};
-
-	Model nanosuitModel("assets/models/nanosuit/crysis_nano_suit_2/scene.gltf");
+	
 	
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
 	{
-		// per-frame time logic
-		// --------------------
-		float currentFrame = glfwGetTime();
-		deltaTime = currentFrame - lastFrame;
-		lastFrame = currentFrame;
+		
 
 		// input
 		// -----

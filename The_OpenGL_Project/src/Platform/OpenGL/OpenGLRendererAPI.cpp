@@ -2,6 +2,7 @@
 #include "OpenGLProject/Base/Base.h"
 #include "OpenGLProject/Utility/Instrumentor.h"
 
+#include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
 void OpenGLMessageCallback(

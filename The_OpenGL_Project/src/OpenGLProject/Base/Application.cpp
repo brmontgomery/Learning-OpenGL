@@ -9,21 +9,40 @@
 #include "OpenGLProject/Utility/Log.h"
 #include "OpenGLProject/Utility/Instrumentor.h"
 
+#include "OpenGLProject/AssetClasses/Models.h"
+
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
-Application* Application::s_AppInstance = nullptr;
-
-Application* Application::Get(const std::string& name)
+Application::Application(const std::string appName) : appName(appName)
 {
 	/**
 	 * This is a safer way to create an instance. instance = new Singleton is
 	 * dangeruous in case two instance threads wants to access at the same time
 	 */
-	if (s_AppInstance == nullptr) {
-		s_AppInstance = new Application(name);
-		s_AppInstance->m_Window = Window::Create(WindowProps(name));
-	}
-	return s_AppInstance;
+	m_Window = Window::Create(WindowProps(appName));
+
+	s_ShaderLibrary = ShaderLibrary::GetLibrary();
+	s_ShaderLibrary->Load("Fancy Shader", "assets/Shaders/lightingShader.vert", "assets/Shaders/lightingShader.frag");
+	s_ShaderLibrary->Load("flatShader", "assets/Shaders/lampShader.vert", "assets/Shaders/lampShader.frag");
+
+	//shaderLib->showAllNames();
+
+	//lamp VAO stuff
+	unsigned int lightVAO;
+	glGenVertexArrays(1, &lightVAO);
+	glBindVertexArray(lightVAO);
+
+
+	//set the coords for lights to light the object
+	glm::vec3 pointLightPositions[] = {
+		glm::vec3(0.7f,  0.2f,  2.0f),
+		glm::vec3(2.3f, -3.3f, -4.0f),
+		glm::vec3(-4.0f,  2.0f, -12.0f),
+		glm::vec3(0.0f,  0.0f, -3.0f)
+	};
+
+	Model nanosuitModel("assets/models/nanosuit/crysis_nano_suit_2/scene.gltf");
 }
 
 Application::~Application()
@@ -31,7 +50,6 @@ Application::~Application()
 	OPENGLPROJECT_PROFILE_FUNCTION();
 
 	//Renderer::Shutdown();
-	delete s_AppInstance;
 }
 
 /*void Application::PushLayer(Layer* layer)
@@ -102,6 +120,9 @@ void Application::Run()
 			m_ImGuiLayer->End();
 			*/
 		}
+		//making the old code work.
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		m_Window->OnUpdate();
 	}

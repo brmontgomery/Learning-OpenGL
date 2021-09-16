@@ -1,6 +1,7 @@
 #pragma once
 
 #include "OpenGLProject/Base/Base.h"
+#include "OpenGLProject/AssetClasses/Shaders.h"
 
 #include "OpenGLProject/Base/Window.h"
 //#include "Eros/Core/Layers/LayerStack.h"
@@ -16,11 +17,8 @@
 class Application
 {
 public:
-	Application(Application& other) = delete;
+	Application(const std::string appName);
 	~Application();
-	void operator=(const Application&) = delete;
-
-	static Application* Get(const std::string& name);
 
 	std::string getAppName() const {
 		return appName;
@@ -50,10 +48,6 @@ private:
 	//LayerStack m_LayerStack;
 	float m_LastFrameTime = 0.0f;
 protected:
-	Application(const std::string appName) : appName(appName)
-	{
-	}
-
-	static Application* s_AppInstance;
+	Ref<ShaderLibrary> s_ShaderLibrary;
 };
 

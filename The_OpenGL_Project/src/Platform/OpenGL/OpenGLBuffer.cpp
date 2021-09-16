@@ -1,6 +1,7 @@
 #include "Platform/OpenGL/OpenGLBuffer.h"
 #include "OpenGLProject/Utility/Instrumentor.h"
 
+#include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
 

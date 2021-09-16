@@ -1,7 +1,13 @@
 #include "OpenGLProject/AssetClasses/Shaders.h"
+#include "OpenGLProject/Utility/Instrumentor.h"
 
 #include "OpenGLProject/Graphics/Renderer.h"
 #include "Platform/OpenGL/OpenGLShaders.h"
+
+Ref<ShaderLibrary> ShaderLibrary::GetLibrary()
+{
+	return CreateRef<ShaderLibrary>();
+}
 
 Ref<Shader> Shader::Create(const std::string& filepath)
 {
@@ -9,6 +15,18 @@ Ref<Shader> Shader::Create(const std::string& filepath)
 	{
 	case RendererAPI::API::None:    OPENGLPROJECT_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
 	case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(filepath);
+	}
+
+	OPENGLPROJECT_CORE_ASSERT(false, "Unknown RendererAPI!");
+	return nullptr;
+}
+
+Ref<Shader> Shader::Create(const std::string& filepath1, const std::string& filepath2)
+{
+	switch (Renderer::GetAPI())
+	{
+	case RendererAPI::API::None:    OPENGLPROJECT_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+	case RendererAPI::API::OpenGL:  return CreateRef<OpenGLShader>(filepath1, filepath2);
 	}
 
 	OPENGLPROJECT_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -52,11 +70,23 @@ Ref<Shader> ShaderLibrary::Load(const std::string& name, const std::string& file
 	Add(name, shader);
 	return shader;
 }
+Ref<Shader> ShaderLibrary::Load(const std::string& name, const std::string& filepath1, const std::string& filepath2)
+{
+	auto shader = Shader::Create(filepath1, filepath2);
+	Add(name, shader);
+	return shader;
+}
 
 Ref<Shader> ShaderLibrary::Get(const std::string& name)
 {
 	OPENGLPROJECT_CORE_ASSERT(Exists(name), "Shader not found!");
 	return m_Shaders[name];
+}
+
+void ShaderLibrary::showAllNames() {
+	for (const std::pair<std::string, Ref<Shader>>& n : m_Shaders) {
+		OPENGLPROJECT_CORE_INFO("Shader Name : {0}\n", n.first);
+	}
 }
 
 bool ShaderLibrary::Exists(const std::string& name) const

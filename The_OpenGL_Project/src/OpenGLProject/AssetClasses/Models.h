@@ -4,7 +4,6 @@
 #include <vector>
 #include <iostream>
 
-#include "OpenGLProject/AssetClasses/OldShaders.h"
 #include "OpenGLProject/AssetClasses/Mesh.h"
 
 #include <stb-master/stb_image.h>
@@ -23,7 +22,7 @@ class Model {
 		Model (std::string path) {
 			loadModel(path);
 		}
-		void Draw(Shader shader);
+		void Draw(Ref<Shader> shader);
 
 	private:
 		//model data
@@ -40,7 +39,7 @@ class Model {
 };
 
 
-void Model::Draw(Shader shader) {
+void Model::Draw(Ref<Shader> shader) {
 	for (unsigned int i = 0; i < meshes.size(); i++)
 		meshes[i].Draw(shader);
 }
