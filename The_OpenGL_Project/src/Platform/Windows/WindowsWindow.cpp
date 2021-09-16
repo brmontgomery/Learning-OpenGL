@@ -57,6 +57,9 @@ void WindowsWindow::Init(const WindowProps& props)
 #if defined(OPENGLPROJECT_DEBUG)
 		if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
 			glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
 		if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
 			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -66,6 +69,12 @@ void WindowsWindow::Init(const WindowProps& props)
 		glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
 #endif
 		window = glfwCreateWindow((int)props.Width, (int)props.Height, windowData.Title.c_str(), nullptr, nullptr);
+		
+		if (window == NULL) {
+			glfwTerminate();
+			OPENGLPROJECT_CORE_ERROR("Failed to create GLFW window!");
+			return;
+		}
 		++s_GLFWWindowCount;
 
 		if (window == NULL) {

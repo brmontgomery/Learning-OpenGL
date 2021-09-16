@@ -1,15 +1,24 @@
-#version 330 core
+#version 450 core
+
 layout (location = 0) in vec3 aPos;
 layout (location = 1) in vec3 aNormal;
 layout (location = 2) in vec2 aTexCoords;
 
-out vec3 FragPos;
-out vec3 Normal;
-out vec2 TexCoords;
+layout (location = 0) out vec3 FragPos;
+layout (location = 1) out vec3 Normal;
+layout (location = 2) out vec2 TexCoords;
 
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
+#ifdef VULKAN
+	layout(set = 0, binding = 0) uniform UniformBuffer { 
+		mat4 model;
+		mat4 view;
+		mat4 projection;
+	}; 
+#else
+	uniform mat4 model;
+	uniform mat4 view;
+	uniform mat4 projection;
+#endif
 
 void main()
 {
