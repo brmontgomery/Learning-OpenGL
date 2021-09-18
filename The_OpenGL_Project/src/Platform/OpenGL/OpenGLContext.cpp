@@ -15,7 +15,7 @@ void OpenGLContext::Init()
 {
 	OPENGLPROJECT_PROFILE_FUNCTION();
 	glfwMakeContextCurrent(m_WindowHandle);
-	OPENGLPROJECT_CORE_ASSERT(!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
+	OPENGLPROJECT_CORE_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Failed to initialize GLAD");
 
 	OPENGLPROJECT_CORE_INFO("OpenGL Info:");
 	OPENGLPROJECT_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));

@@ -4,6 +4,7 @@
 #include "OpenGLProject/Graphics/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 class WindowsWindow : public Window
 {
