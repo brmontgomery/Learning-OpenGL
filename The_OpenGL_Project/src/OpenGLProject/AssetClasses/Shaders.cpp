@@ -79,6 +79,18 @@ Ref<Shader> ShaderLibrary::Load(const std::string& name, const std::string& file
 
 Ref<Shader> ShaderLibrary::Get(const std::string& name)
 {
+	if (name.find('/') != std::string::npos) {
+		std::string newName = "";
+		auto lastSlash = name.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = name.rfind('.');
+		auto count = lastDot == std::string::npos ? name.size() - lastSlash : lastDot - lastSlash;
+		newName = name.substr(lastSlash, count);
+
+		OPENGLPROJECT_CORE_ASSERT(Exists(newName), "Shader not found!");
+		return m_Shaders[newName];
+	}
+
 	OPENGLPROJECT_CORE_ASSERT(Exists(name), "Shader not found!");
 	return m_Shaders[name];
 }

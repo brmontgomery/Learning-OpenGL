@@ -42,7 +42,8 @@ Application::Application(const std::string appName) : appName(appName)
 		glm::vec3(0.0f,  0.0f, -3.0f)
 	};
 
-	Model nanosuitModel("assets/models/nanosuit/crysis_nano_suit_2/scene.gltf");
+	s_ModelLibrary = ModelLibrary::GetLibrary();
+	s_ModelLibrary->Load("Nanosuit","assets/models/nanosuit/crysis_nano_suit_2/scene.gltf");
 }
 
 Application::~Application()

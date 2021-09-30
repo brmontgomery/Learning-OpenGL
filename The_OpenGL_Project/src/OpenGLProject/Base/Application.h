@@ -2,6 +2,7 @@
 
 #include "OpenGLProject/Base/Base.h"
 #include "OpenGLProject/AssetClasses/Shaders.h"
+#include "OpenGLProject/AssetClasses/Models.h"
 
 #include "OpenGLProject/Base/Window.h"
 //#include "Eros/Core/Layers/LayerStack.h"
@@ -49,5 +50,6 @@ private:
 	float m_LastFrameTime = 0.0f;
 protected:
 	Ref<ShaderLibrary> s_ShaderLibrary;
+	Ref<ModelLibrary> s_ModelLibrary;
 };
 

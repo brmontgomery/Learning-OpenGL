@@ -75,7 +75,7 @@ project "The_OpenGL_Project"
 		--"assets/textures/**.jpg"
 	}
 
-	removefiles { "OldShaders.h" }
+	removefiles { "OldShaders.h", "OldModels.h" }
 
 	defines
 	{
